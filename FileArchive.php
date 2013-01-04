@@ -1,6 +1,6 @@
 <?php
 
-class FileArchive extends IArchive
+class FileArchive implements IArchive
 {
 	private $file;
 	private $contents;
@@ -31,13 +31,13 @@ class FileArchive extends IArchive
 
 	public function add($uid)
 	{
-		if (!this->contains($uid))
+		if (!$this->contains($uid))
 			$this->contents[] = $uid;
 	}
 
 	public function remove($uid)
 	{
-		if (($key = array_search($uid, $this->contents, TRUE) !== FALSE)
+		if (($key = array_search($uid, $this->contents, TRUE)) !== FALSE)
 			unset($this->contents[$key]);
 	}
 
