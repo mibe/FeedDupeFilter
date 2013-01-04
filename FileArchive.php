@@ -38,7 +38,7 @@ class FileArchive implements IArchive
 		}
 		else
 		{
-			$this->contents = array();
+			$this->clear();
 			$this->save();
 		}
 
@@ -71,5 +71,10 @@ class FileArchive implements IArchive
 	public function contains($uid)
 	{
 		return in_array($uid, $this->contents, TRUE);
+	}
+
+	public function clear()
+	{
+		$this->contents = array();
 	}
 }
