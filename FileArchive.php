@@ -24,7 +24,7 @@ class FileArchive implements IArchive
 
 		// Chop the filename if it's longer than 200 chars.
 		if (strlen($this->file) > 200)
-			$this->file = substr($this->file, 0, 200);
+			$this->file = substr($this->file, -200);
 	}
 
 	private function load()
