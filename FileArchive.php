@@ -9,18 +9,35 @@ class FileArchive implements IArchive
 	{
 		$this->file = $file;
 
-		// Only unserialize if the data file exists.
-		// If not, start with an empty archive.
-		if (file_exists($file))
-		{
-			$data = file_get_contents($file);
-			$this->contents = unserialize($data);
-		}
-		else
-			$this->contents = array();
+		$this->load();
 	}
 
 	function __destruct()
+	{
+		$this->save();
+	}
+
+	private function load()
+	{
+		// Only unserialize if the data file exists.
+		// If not, start with an empty archive.
+		if (file_exists($this->file))
+		{
+			$data = file_get_contents($this->file);
+			$this->contents = unserialize($data);
+		}
+		else
+		{
+			$this->contents = array();
+			$this->save();
+		}
+
+		// Get realpath, because otherwise with a relative filepath the
+		// file would be written to SERVER_ROOT in the destructor.
+		$this->file = realpath($this->file);
+	}
+
+	private function save()
 	{
 		$data = serialize($this->contents);
 		$bytes = file_put_contents($this->file, $data);
