@@ -5,9 +5,9 @@ class FileArchive implements IArchive
 	private $file;
 	private $contents;
 
-	function __construct($file)
+	function __construct($archiveIdentifier)
 	{
-		$this->file = $file;
+		$this->buildFilename($archiveIdentifier);
 
 		$this->load();
 	}
@@ -15,6 +15,16 @@ class FileArchive implements IArchive
 	function __destruct()
 	{
 		$this->save();
+	}
+
+	private function buildFilename($id)
+	{
+		// Replace all characters which are not digits and latin chars with a dash
+		$this->file = preg_replace("/[^a-zA-Z0-9]/", '-', $id);
+
+		// Chop the filename if it's longer than 200 chars.
+		if (strlen($this->file) > 200)
+			$this->file = substr($this->file, 0, 200);
 	}
 
 	private function load()
