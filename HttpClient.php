@@ -8,6 +8,7 @@ class HttpClient
 
 	public function get($url)
 	{
+		$this->status = NULL;
 		$this->response = @file_get_contents($url);
 
 		if (isset($http_response_header))
