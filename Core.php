@@ -29,6 +29,7 @@ class Core
 	private function handleHttpErrors()
 	{
 		header('HTTP/1.1 500 Server Error');
-		exit(sprintf('Error retrieving feed URL "%s"', $this->feedUrl));
+		$msg = sprintf('Error retrieving feed URL "%s" (HTTP Status: %d)', $this->feedUrl, $this->http->status);
+		exit($msg);
 	}
 }
