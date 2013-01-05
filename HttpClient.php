@@ -3,6 +3,7 @@
 class HttpClient
 {
 	public $status;
+	public $contentType;
 
 	public $response;
 
@@ -26,10 +27,15 @@ class HttpClient
 	private function parseResponseHeader($header)
 	{
 		// HTTP/1.1 200 OK
-		$pattern = '#HTTP/\d\.\d (\d{3})#';
+		$this->parseResponseHeaderEntry('#^HTTP/\d\.\d (\d{3})#', $this->status, $header);
 
-		// Clear fields
-		$this->status = NULL;
+		// Content-Type: text/html; charset=UTF-8
+		$this->parseResponseHeaderEntry('/^Content-Type: (.+)$/', $this->contentType, $header);
+	}
+
+	private function parseResponseHeaderEntry($pattern, &$destination, $header)
+	{
+		$destination = NULL;
 
 		foreach($header as $entry)
 		{
@@ -37,9 +43,11 @@ class HttpClient
 
 			if ($match == 1)
 			{
-				$this->status = (int)$matches[1];
-				break;
+				$destination = $matches[1];
+				return TRUE;
 			}
 		}
+
+		return FALSE;
 	}
 }
