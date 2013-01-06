@@ -20,4 +20,9 @@ abstract class FeedItemBase
 		else
 			return $list->item(0)->nodeValue;
 	}
+
+	public function __toString()
+	{
+		return sprintf("[%s] %s (%s) (URL: %s)\n", $this->id, $this->title, $this->date, $this->link);
+	}
 }
