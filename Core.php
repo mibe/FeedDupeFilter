@@ -5,8 +5,12 @@ require('FileArchive.php');
 
 require('FeedItemBase.php');
 require('Rss2FeedItem.php');
+require('AtomFeedItem.php');
+require('Rss1FeedItem.php');
 require('FeedManipulatorBase.php');
 require('Rss2FeedManipulator.php');
+require('AtomFeedManipulator.php');
+require('Rss1FeedManipulator.php');
 
 require('HttpClient.php');
 
@@ -31,9 +35,17 @@ class Core
 	private function detectManipulator()
 	{
 		$rss2 = new Rss2FeedManipulator($this->http->response);
+		$atom = new AtomFeedManipulator($this->http->response);
+		$rss1 = new Rss1FeedManipulator($this->http->response);
 
 		if ($rss2->isSupported())
 			$this->feedManipulator = $rss2;
+		else if ($atom->isSupported())
+			$this->feedManipulator = $atom;
+		else if ($rss1->isSupported())
+			$this->feedManipulator = $rss1;
+		else
+			die ("WTF?");
 	}
 
 	private function fetchFeed()
