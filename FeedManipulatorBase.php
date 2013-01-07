@@ -1,6 +1,6 @@
 <?php
 
-abstract class FeedManipulatorBase implements IteratorAggregate
+abstract class FeedManipulatorBase implements IteratorAggregate, Countable
 {
 	protected $feed;
 	protected $items;
@@ -30,5 +30,10 @@ abstract class FeedManipulatorBase implements IteratorAggregate
 	public function getIterator()
 	{
 		return new ArrayIterator($this->items);
+	}
+
+	public function count()
+	{
+		return count($this->items);
 	}
 }
