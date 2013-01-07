@@ -25,8 +25,8 @@ class Rss2FeedManipulator extends FeedManipulatorBase
 
 		foreach($items as $item)
 		{
-			$fItem = new Rss2FeedItem();
-			$fItem->parseXml($item);
+			$fItem = new Rss2FeedItem($item);
+			$fItem->parseXml();
 
 			$this->items[] = $fItem;
 		}

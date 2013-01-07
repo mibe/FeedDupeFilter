@@ -23,8 +23,8 @@ class Rss1FeedManipulator extends FeedManipulatorBase
 
 		foreach($items as $item)
 		{
-			$fItem = new Rss1FeedItem();
-			$fItem->parseXml($item);
+			$fItem = new Rss1FeedItem($item);
+			$fItem->parseXml();
 
 			$this->items[] = $fItem;
 		}

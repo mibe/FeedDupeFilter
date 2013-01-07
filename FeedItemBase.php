@@ -9,25 +9,32 @@ abstract class FeedItemBase
 
 	public $id;
 
-	abstract public function parseXml($xml);
+	protected $xmlElement;
 
-	private function getXmlChild($domElement, $name)
+	function __construct(DOMElement $xmlElement)
 	{
-		$list = $domElement->getElementsByTagName($name);
+		$this->xmlElement = $xmlElement;
+	}
+
+	abstract public function parseXml();
+
+	private function getXmlChild($name)
+	{
+		$list = $this->xmlElement->getElementsByTagName($name);
 
 		return $list->length > 0 ? $list->item(0) : NULL;
 	}
 
-	protected function getXmlChildValue($domElement, $name)
+	protected function getXmlChildValue($name)
 	{
-		$child = $this->getXmlChild($domElement, $name);
+		$child = $this->getXmlChild($name);
 
 		return $child != NULL ? $child->nodeValue : NULL;
 	}
 
-	protected function getXmlChildAttributeValue($domElement, $name, $attributeName)
+	protected function getXmlChildAttributeValue($name, $attributeName)
 	{
-		$child = $this->getXmlChild($domElement, $name);
+		$child = $this->getXmlChild($name);
 
 		if ($child == NULL)
 			return NULL;

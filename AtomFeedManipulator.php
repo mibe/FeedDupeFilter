@@ -25,8 +25,8 @@ class AtomFeedManipulator extends FeedManipulatorBase
 
 		foreach($items as $item)
 		{
-			$fItem = new AtomFeedItem();
-			$fItem->parseXml($item);
+			$fItem = new AtomFeedItem($item);
+			$fItem->parseXml();
 
 			$this->items[] = $fItem;
 		}

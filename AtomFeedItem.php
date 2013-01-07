@@ -2,12 +2,17 @@
 
 class AtomFeedItem extends FeedItemBase
 {
-	public function parseXml($xml)
+	public function __construct(DOMElement $xmlElement)
 	{
-		$this->title = $this->getXmlChildValue($xml, 'title');
-		$this->description = $this->getXmlChildValue($xml, 'summary');
-		$this->date = $this->getXmlChildValue($xml, 'updated');
-		$this->link = $this->getXmlChildAttributeValue($xml, 'link', 'href');
-		$this->id = $this->getXmlChildValue($xml, 'id');
+		parent::__construct($xmlElement);
+	}
+
+	public function parseXml()
+	{
+		$this->title = $this->getXmlChildValue('title');
+		$this->description = $this->getXmlChildValue('summary');
+		$this->date = $this->getXmlChildValue('updated');
+		$this->link = $this->getXmlChildAttributeValue('link', 'href');
+		$this->id = $this->getXmlChildValue('id');
 	}
 }
