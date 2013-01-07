@@ -18,7 +18,12 @@ abstract class FeedManipulatorBase
 		return $this->feed->asXML();
 	}
 
+	public function removeItem(FeedItem $item)
+	{
+		if (($key = array_search($item, $this->items, TRUE)) !== FALSE)
+			unset($this->items[$key]);
+	}
+
 	abstract public function isSupported();
-	abstract public function removeItem(FeedItem $item);
 	abstract public function parseFeed();
 }

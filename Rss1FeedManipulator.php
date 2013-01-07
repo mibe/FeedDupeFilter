@@ -17,10 +17,6 @@ class Rss1FeedManipulator extends FeedManipulatorBase
 		return $rdf->isDefaultNamespace('http://purl.org/rss/1.0/');
 	}
 
-	public function removeItem(FeedItem $item)
-	{
-	}
-
 	public function parseFeed()
 	{
 		$items = $this->feed->getElementsByTagName('item');

@@ -19,10 +19,6 @@ class Rss2FeedManipulator extends FeedManipulatorBase
 		return $version == '2.0';
 	}
 
-	public function removeItem(FeedItem $item)
-	{
-	}
-
 	public function parseFeed()
 	{
 		$items = $this->feed->getElementsByTagName('item');

@@ -19,10 +19,6 @@ class AtomFeedManipulator extends FeedManipulatorBase
 		return $xmlns == 'http://www.w3.org/2005/Atom';
 	}
 
-	public function removeItem(FeedItem $item)
-	{
-	}
-
 	public function parseFeed()
 	{
 		$items = $this->feed->getElementsByTagName('entry');
