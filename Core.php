@@ -60,6 +60,18 @@ class Core
 	public function Filter()
 	{
 		$this->feedManipulator->parseFeed();
+
+		foreach($this->feedManipulator as $item)
+		{
+			$uid = $this->buildUniqueId($item);
+
+			if ($this->archive->contains($uid))
+			{
+				printf("Gotcha! We had '%s' already.\n\n", $uid);
+			}
+			else
+				$this->archive->add($uid);
+		}
 	}
 
 	private function handleHttpErrors()
@@ -67,5 +79,10 @@ class Core
 		header('HTTP/1.1 500 Server Error');
 		$msg = sprintf('Error retrieving feed URL "%s" (HTTP Status: %d)', $this->feedUrl, $this->http->status);
 		exit($msg);
+	}
+
+	private function buildUniqueId(FeedItemBase $feedItem)
+	{
+		return sha1($feedItem->title);
 	}
 }
