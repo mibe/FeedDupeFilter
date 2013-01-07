@@ -1,6 +1,6 @@
 <?php
 
-abstract class FeedManipulatorBase
+abstract class FeedManipulatorBase implements IteratorAggregate
 {
 	protected $feed;
 	protected $items;
@@ -18,7 +18,7 @@ abstract class FeedManipulatorBase
 		return $this->feed->asXML();
 	}
 
-	public function removeItem(FeedItem $item)
+	public function removeItem(FeedItemBase $item)
 	{
 		if (($key = array_search($item, $this->items, TRUE)) !== FALSE)
 			unset($this->items[$key]);
@@ -26,4 +26,9 @@ abstract class FeedManipulatorBase
 
 	abstract public function isSupported();
 	abstract public function parseFeed();
+
+	public function getIterator()
+	{
+		return new ArrayIterator($this->items);
+	}
 }
