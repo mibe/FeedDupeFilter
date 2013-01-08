@@ -15,11 +15,15 @@ abstract class FeedManipulatorBase implements IteratorAggregate, Countable
 
 	public function buildFeed()
 	{
-		return $this->feed->asXML();
+		return $this->feed->saveXML();
 	}
 
 	public function removeItem(FeedItemBase $item)
 	{
+		// Remove from feed
+		$item->xmlElement->parentNode->removeChild($item->xmlElement);
+
+		// Remove from item array
 		if (($key = array_search($item, $this->items, TRUE)) !== FALSE)
 			unset($this->items[$key]);
 	}

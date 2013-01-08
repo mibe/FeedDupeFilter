@@ -9,7 +9,7 @@ abstract class FeedItemBase
 
 	public $id;
 
-	protected $xmlElement;
+	public $xmlElement;
 
 	function __construct(DOMElement $xmlElement)
 	{
