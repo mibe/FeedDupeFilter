@@ -37,10 +37,21 @@ class Core
 
 	private function detectManipulator()
 	{
+		$lastLoadingError = '';
+
 		foreach(self::$manipulatorClasses as $class)
 		{
 			$className = $class . 'FeedManipulator';
-			$instance = new $className($this->http->response);
+			$instance = new $className();
+			$loaded = $instance->loadFeed($this->http->response);
+
+			// If the feed couldn't get loaded properly, save the error message
+			// and try another manipulator.
+			if (!$loaded)
+			{
+				$lastLoadingError = $instance->loadingError;
+				continue;
+			}
 
 			// If this manipulator supports the feed, use it and end the probing.
 			if ($instance->isSupported())
@@ -50,7 +61,12 @@ class Core
 			}
 		}
 
-		self::generateHttpError(501, 'Unsupported feed: No feed manipulator for this type of feed found.');
+		$msg = 'Unsupported feed: No feed manipulator for this type of feed found.';
+
+		if (!empty($lastLoadingError))
+			$msg .= sprintf(' Last error message of the XML parser was: %s', $lastLoadingError);
+
+		self::generateHttpError(501, $msg);
 	}
 
 	private function fetchFeed()
