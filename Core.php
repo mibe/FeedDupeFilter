@@ -50,7 +50,7 @@ class Core
 			}
 		}
 
-		die ("WTF?");
+		self::generateHttpError(501, 'Unsupported feed: No feed manipulator for this type of feed found.');
 	}
 
 	private function fetchFeed()
@@ -59,7 +59,10 @@ class Core
 		$result = $this->http->get($this->feedUrl);
 
 		if ($result === FALSE || $this->http->status != 200)
-			$this->handleHttpErrors();
+		{
+			$msg = sprintf('Error retrieving feed URL "%s" (HTTP Status: %d).', $this->feedUrl, $this->http->status);
+			self::generateHttpError(500, $msg);
+		}
 	}
 
 	public function filter()
@@ -84,15 +87,24 @@ class Core
 		print $this->feedManipulator->buildFeed();
 	}
 
-	private function handleHttpErrors()
-	{
-		header('HTTP/1.1 500 Server Error');
-		$msg = sprintf('Error retrieving feed URL "%s" (HTTP Status: %d).', $this->feedUrl, $this->http->status);
-		exit($msg);
-	}
-
 	private function buildUniqueId(FeedItemBase $feedItem)
 	{
 		return sha1($feedItem->title);
+	}
+
+	public static function generateHttpError($errorCode, $errorMessage)
+	{
+		switch($errorCode)
+		{
+			case 404: $errorCode .= ' File Not Found';
+				break;
+			case 500: $errorCode .= ' Server Error';
+				break;
+			case 501: $errorCode .= ' Not Implemented';
+				break;
+		}
+
+		header('HTTP/1.1 ' . $errorCode);
+		exit($errorMessage);
 	}
 }
