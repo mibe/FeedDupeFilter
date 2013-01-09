@@ -2,11 +2,6 @@
 
 class AtomFeedManipulator extends FeedManipulatorBase
 {
-	function __construct($rawFeed)
-	{
-		parent::__construct($rawFeed);
-	}
-
 	public function isSupported()
 	{
 		$feed = $this->feed->getElementsByTagName('feed');

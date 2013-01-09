@@ -2,11 +2,6 @@
 
 class Rss1FeedManipulator extends FeedManipulatorBase
 {
-	function __construct($rawFeed)
-	{
-		parent::__construct($rawFeed);
-	}
-
 	public function isSupported()
 	{
 		$rdf = $this->feed->documentElement;

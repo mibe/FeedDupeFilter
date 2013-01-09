@@ -2,11 +2,6 @@
 
 class Rss2FeedManipulator extends FeedManipulatorBase
 {
-	function __construct($rawFeed)
-	{
-		parent::__construct($rawFeed);
-	}
-
 	public function isSupported()
 	{
 		$rss = $this->feed->getElementsByTagName('rss');

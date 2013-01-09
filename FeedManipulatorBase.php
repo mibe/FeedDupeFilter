@@ -5,12 +5,41 @@ abstract class FeedManipulatorBase implements IteratorAggregate, Countable
 	protected $feed;
 	protected $items;
 
-	function __construct($rawFeed)
-	{
-		$this->feed = new DOMDocument();
-		$this->feed->loadXML($rawFeed);
+	public $loadingError;
 
+	function __construct()
+	{
 		$this->items = array();
+		$this->loadingError = FALSE;
+	}
+
+	public function xmlErrorHandler($code, $message)
+	{
+		if ($code != E_WARNING)
+			return FALSE;
+
+		// DOMDocument::loadXML(): Entity 'raquo' not defined in Entity, line: 69;
+		// DOMDocument::loadXML() [domdocument.loadxml]: Entity 'raquo' not defined in Entity, line: 69
+		$pattern = '/^DOMDocument::loadXML\(\)(:| \[.+\]:) (.+)$/';
+		$match = '';
+
+		// If this regex matches, the message is in the 3rd array element (2nd group).
+		if (preg_match($pattern, $message, $match) === 1)
+			$this->loadingError = $match[2];
+		else
+			return FALSE;
+	}
+
+	public function loadFeed($rawFeed)
+	{
+		set_error_handler(array(&$this, 'xmlErrorHandler'));
+
+		$this->feed = new DOMDocument();
+		$result = $this->feed->loadXML($rawFeed);
+
+		restore_error_handler();
+
+		return $result;
 	}
 
 	public function buildFeed()
