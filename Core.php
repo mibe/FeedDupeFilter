@@ -83,6 +83,11 @@ class Core
 			$msg = sprintf('Error retrieving feed URL "%s" (HTTP Status: %d).', $this->feedUrl, $this->http->status);
 			throw new ErrorException($msg, 500);
 		}
+		else if (empty($this->http->response))
+		{
+			$msg = sprintf('The retrieved feed was empty. (HTTP Status: %d).', $this->http->status);
+			throw new ErrorException($msg, 500);
+		}
 	}
 
 	public function filter()
