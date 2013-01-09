@@ -69,7 +69,8 @@ class Core
 		if (!empty($lastLoadingError))
 			$msg .= sprintf(' Last error message of the XML parser was: %s', $lastLoadingError);
 
-		self::generateHttpError(501, $msg);
+		// Impossible to work without a manipulator.
+		throw new ErrorException($msg, 501);
 	}
 
 	private function fetchFeed()
@@ -80,7 +81,7 @@ class Core
 		if ($result === FALSE || $this->http->status != 200)
 		{
 			$msg = sprintf('Error retrieving feed URL "%s" (HTTP Status: %d).', $this->feedUrl, $this->http->status);
-			self::generateHttpError(500, $msg);
+			throw new ErrorException($msg, 500);
 		}
 	}
 
@@ -109,24 +110,5 @@ class Core
 	private function buildUniqueId(FeedItemBase $feedItem)
 	{
 		return sha1($feedItem->title);
-	}
-
-	public static function generateHttpError($errorCode, $errorMessage = '')
-	{
-		if (!is_numeric($errorCode) || $errorCode < 100 || $errorCode > 599)
-			throw new InvalidArgumentException('errorCode is not an valid HTTP status code.');
-
-		switch($errorCode)
-		{
-			case 400: $errorCode .= ' Bad Request';
-				break;
-			case 500: $errorCode .= ' Server Error';
-				break;
-			case 501: $errorCode .= ' Not Implemented';
-				break;
-		}
-
-		header('HTTP/1.1 ' . $errorCode);
-		exit($errorMessage);
 	}
 }
