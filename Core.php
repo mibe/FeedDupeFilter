@@ -75,6 +75,8 @@ class Core
 		}
 
 		// Filtering is done, now build and output the altered feed.
+		// Also use the same Content-Type of the feed, so the encoding won't get lost.
+		header('Content-Type: ' . $this->http->contentType);
 		print $this->feedManipulator->buildFeed();
 	}
 
