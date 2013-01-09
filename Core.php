@@ -25,6 +25,9 @@ class Core
 
 	function __construct($feedUrl)
 	{
+		if (empty($feedUrl))
+			throw new InvalidArgumentException('Empty string given.');
+
 		$this->feedUrl = $feedUrl;
 
 		// Use the feed URL as identifier
@@ -108,11 +111,14 @@ class Core
 		return sha1($feedItem->title);
 	}
 
-	public static function generateHttpError($errorCode, $errorMessage)
+	public static function generateHttpError($errorCode, $errorMessage = '')
 	{
+		if (!is_numeric($errorCode) || $errorCode < 100 || $errorCode > 599)
+			throw new InvalidArgumentException('errorCode is not an valid HTTP status code.');
+
 		switch($errorCode)
 		{
-			case 404: $errorCode .= ' File Not Found';
+			case 400: $errorCode .= ' Bad Request';
 				break;
 			case 500: $errorCode .= ' Server Error';
 				break;

@@ -9,6 +9,9 @@ class HttpClient
 
 	public function get($url)
 	{
+		if (empty($url))
+			throw new InvalidArgumentException('Empty string given.');
+
 		$this->status = NULL;
 		$this->response = @file_get_contents($url);
 

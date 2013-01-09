@@ -32,6 +32,9 @@ abstract class FeedManipulatorBase implements IteratorAggregate, Countable
 
 	public function loadFeed($rawFeed)
 	{
+		if (empty($rawFeed) || !is_string($rawFeed))
+			throw new InvalidArgumentException('Invalid feed given. Must be a non-empty string.');
+
 		set_error_handler(array(&$this, 'xmlErrorHandler'));
 
 		$this->feed = new DOMDocument();

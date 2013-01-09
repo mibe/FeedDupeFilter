@@ -7,6 +7,9 @@ abstract class ArchiveBase
 
 	function __construct($archiveIdentifier)
 	{
+		if (empty($archiveIdentifier) || !is_string($archiveIdentifier))
+			throw new InvalidArgumentException('Invalid archiveIdentifier given. Must be a non-empty string.');
+
 		$this->archiveIdentifier = $archiveIdentifier;
 
 		$this->load();
