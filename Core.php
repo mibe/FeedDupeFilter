@@ -21,6 +21,8 @@ class Core
 	private $http;
 	private $feedManipulator;
 
+	public static $manipulatorClasses = array('Rss2', 'Atom', 'Rss1');
+
 	function __construct($feedUrl)
 	{
 		$this->feedUrl = $feedUrl;
@@ -35,18 +37,20 @@ class Core
 
 	private function detectManipulator()
 	{
-		$rss2 = new Rss2FeedManipulator($this->http->response);
-		$atom = new AtomFeedManipulator($this->http->response);
-		$rss1 = new Rss1FeedManipulator($this->http->response);
+		foreach(self::$manipulatorClasses as $class)
+		{
+			$className = $class . 'FeedManipulator';
+			$instance = new $className($this->http->response);
 
-		if ($rss2->isSupported())
-			$this->feedManipulator = $rss2;
-		else if ($atom->isSupported())
-			$this->feedManipulator = $atom;
-		else if ($rss1->isSupported())
-			$this->feedManipulator = $rss1;
-		else
-			die ("WTF?");
+			// If this manipulator supports the feed, use it and end the probing.
+			if ($instance->isSupported())
+			{
+				$this->feedManipulator = $instance;
+				return;
+			}
+		}
+
+		die ("WTF?");
 	}
 
 	private function fetchFeed()
