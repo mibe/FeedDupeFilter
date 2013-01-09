@@ -35,6 +35,8 @@ abstract class FeedManipulatorBase implements IteratorAggregate, Countable
 		set_error_handler(array(&$this, 'xmlErrorHandler'));
 
 		$this->feed = new DOMDocument();
+		$this->feed->preserveWhitespace = FALSE;
+
 		$result = $this->feed->loadXML($rawFeed);
 
 		restore_error_handler();
