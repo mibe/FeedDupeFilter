@@ -25,6 +25,7 @@ class Core
 	{
 		$this->feedUrl = $feedUrl;
 
+		// Use the feed URL as identifier
 		$this->archive = new FileArchive($feedUrl);
 		$this->http = new HttpClient();
 
@@ -57,7 +58,7 @@ class Core
 			$this->handleHttpErrors();
 	}
 
-	public function Filter()
+	public function filter()
 	{
 		$this->feedManipulator->parseFeed();
 
@@ -65,19 +66,22 @@ class Core
 		{
 			$uid = $this->buildUniqueId($item);
 
+			// Check if the item was already seen.
+			// If yes, remove it. If no, add it to the archive.
 			if ($this->archive->contains($uid))
-			{
-				printf("Gotcha! We had '%s' already.\n\n", $uid);
-			}
+				$this->feedManipulator->removeItem($item);
 			else
 				$this->archive->add($uid);
 		}
+
+		// Filtering is done, now build and output the altered feed.
+		print $this->feedManipulator->buildFeed();
 	}
 
 	private function handleHttpErrors()
 	{
 		header('HTTP/1.1 500 Server Error');
-		$msg = sprintf('Error retrieving feed URL "%s" (HTTP Status: %d)', $this->feedUrl, $this->http->status);
+		$msg = sprintf('Error retrieving feed URL "%s" (HTTP Status: %d).', $this->feedUrl, $this->http->status);
 		exit($msg);
 	}
 
