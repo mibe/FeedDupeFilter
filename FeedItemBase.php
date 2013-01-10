@@ -65,6 +65,8 @@ abstract class FeedItemBase
 
 	/**
 	 * Parses the XML of the feed entry.
+	 *
+	 * @return void
 	 */
 	abstract public function parseXml();
 

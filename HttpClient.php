@@ -31,6 +31,7 @@ class HttpClient
 	 * Throws an exception if the URL is empty.
 	 *
 	 * @param string $url
+	 * @return void
 	 */
 	public function get($url)
 	{
@@ -59,6 +60,7 @@ class HttpClient
 	 * Needs the contents of the predefined $http_response_header variable.
 	 *
 	 * @param array
+	 * @return void
 	 */
 	private function parseResponseHeader($header)
 	{
@@ -76,9 +78,10 @@ class HttpClient
 	/**
 	 * Uses an regular expression to search for the correct value in the header array.
 	 *
-	 * @param string $pattern Regular expression
+	 * @param string $pattern Regular expression with one group
 	 * @param string &$destination Variable to save the value in (call by reference)
 	 * @param array $header
+	 * @return bool TRUE if pattern matched and group content saved in destination
 	 */
 	private function parseResponseHeaderEntry($pattern, &$destination, $header)
 	{

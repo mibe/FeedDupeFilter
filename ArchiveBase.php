@@ -41,6 +41,8 @@ abstract class ArchiveBase implements Countable
 	 *
 	 * The saving is done in the subclass, which implements the abstract
 	 * {@link save()} method.
+	 *
+	 * @return void
 	 */
 	function __destruct()
 	{
@@ -49,11 +51,15 @@ abstract class ArchiveBase implements Countable
 
 	/**
 	 * Loads the archive.
+	 *
+	 * @return void
 	 */
 	abstract protected function load();
 
 	/**
 	 * Saves the archive.
+	 *
+	 * @return void
 	 */
 	abstract protected function save();
 
@@ -63,6 +69,7 @@ abstract class ArchiveBase implements Countable
 	 * The entry is checked against duplicates.
 	 *
 	 * @param string
+	 * @return void
 	 */
 	public function add($uid)
 	{
@@ -74,6 +81,7 @@ abstract class ArchiveBase implements Countable
 	 * Remove an element from the archive.
 	 *
 	 * @param string
+	 * @return void
 	 */
 	public function remove($uid)
 	{
@@ -85,7 +93,7 @@ abstract class ArchiveBase implements Countable
 	 * Check if the archive already contains an specified element.
 	 *
 	 * @param string
-	 * @returns bool TRUE if the element is already in the archive.
+	 * @return bool TRUE if the element is already in the archive.
 	 */
 	public function contains($uid)
 	{
@@ -94,6 +102,8 @@ abstract class ArchiveBase implements Countable
 
 	/**
 	 * Remove every element in the archive. The archive will be empty after that.
+	 *
+	 * @return void
 	 */
 	public function clear()
 	{

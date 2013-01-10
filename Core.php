@@ -72,6 +72,8 @@ class Core
 	 *
 	 * If the XML of the feed could not be parsed properly an exception with
 	 * more information about the cause will be thrown.
+	 *
+	 * @return void
 	 */
 	private function detectManipulator()
 	{
@@ -113,6 +115,8 @@ class Core
 	 *
 	 * If the feed could not be downloaded an exception will be thrown with
 	 * information about the cause.
+	 *
+	 * @return void
 	 */
 	private function fetchFeed()
 	{
@@ -136,6 +140,8 @@ class Core
 	 *
 	 * The same Content-Type header field as the original feed had is also set so
 	 * the MIME type (and encoding) the remote server used isn't lost.
+	 *
+	 * @return void
 	 */
 	public function filter()
 	{

@@ -23,6 +23,8 @@ class FileArchive extends ArchiveBase
 
 	/**
 	 * Generates the filename from the archive identifier.
+	 *
+	 * @return void
 	 */
 	private function buildFilename()
 	{
@@ -38,6 +40,8 @@ class FileArchive extends ArchiveBase
 	 * {@inheritdoc}
 	 *
 	 * If the archive file does not exist, it will be automatically created.
+	 *
+	 * @return void
 	 */
 	protected function load()
 	{
@@ -67,6 +71,8 @@ class FileArchive extends ArchiveBase
 	 * {@inheritdoc}
 	 *
 	 * Throws an exception if the file could not be written.
+	 *
+	 * @return void
 	 */
 	protected function save()
 	{

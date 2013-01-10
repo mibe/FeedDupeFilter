@@ -50,6 +50,8 @@ abstract class FeedManipulatorBase implements IteratorAggregate, Countable
 	 * which occurred during parsing of the XML document in DOMDocument.
 	 * The error message is extracted from the error string by using an
 	 * regular expression and stored in the {@link loadingError} field.
+	 *
+	 * @return false|void
 	 */
 	public function xmlErrorHandler($code, $message)
 	{
@@ -107,6 +109,7 @@ abstract class FeedManipulatorBase implements IteratorAggregate, Countable
 	 * Removes an entry from the feed.
 	 *
 	 * @param FeedItemBase Item to remove
+	 * @return void
 	 */
 	public function removeItem(FeedItemBase $item)
 	{
@@ -127,6 +130,8 @@ abstract class FeedManipulatorBase implements IteratorAggregate, Countable
 
 	/**
 	 * Parses the feed to extract all feed entries.
+	 *
+	 * @return void
 	 */
 	abstract public function parseFeed();
 
