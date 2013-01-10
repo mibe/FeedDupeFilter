@@ -136,14 +136,19 @@ class Core
 	}
 
 	/**
-	 * Filter out duplicated items in the feed. The resulting feed is directly sent to the client.
+	 * Filter out duplicated items in the feed.
 	 *
-	 * The same Content-Type header field as the original feed had is also set so
-	 * the MIME type (and encoding) the remote server used isn't lost.
+	 * If the feed is sent to the client, the same Content-Type header field
+	 * as the original feed had is set so the MIME type (and encoding)
+	 * the remote server used isn't lost.
 	 *
-	 * @return void
+	 * If the feed is not sent to the client, the resulting array contains the
+	 * feed in the 'output' element and the header fields in the 'header' element.
+	 *
+	 * @param bool $directOutput TRUE if the feed is sent to the client.
+	 * @return void|array
 	 */
-	public function filter()
+	public function filter($directOutput = TRUE)
 	{
 		// Parse the feed and extract all items.
 		$this->feedManipulator->parseFeed();
@@ -161,10 +166,21 @@ class Core
 		}
 
 		// Filtering is done, now build and output the altered feed.
+		$output = $this->feedManipulator->buildFeed();
+
 		// Also use the same Content-Type of the feed, so the MIME type
 		// (and encoding) won't get lost.
-		header('Content-Type: ' . $this->http->contentType);
-		print $this->feedManipulator->buildFeed();
+		$header = array('Content-Type' => $this->http->contentType);
+
+		if ($directOutput)
+		{
+			foreach($header as $key => $value)
+				header(sprintf('%s: %s', $key, $value));
+
+			exit($output);
+		}
+		else
+			return array('output' => $output, 'header' => $header);
 	}
 
 	/**
