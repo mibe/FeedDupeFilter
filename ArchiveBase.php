@@ -32,6 +32,7 @@ abstract class ArchiveBase implements Countable
 
 		$this->archiveIdentifier = $archiveIdentifier;
 
+		$this->clear();
 		$this->load();
 	}
 

@@ -58,7 +58,8 @@ class FileArchive extends ArchiveBase
 		}
 
 		// Get realpath, because otherwise with a relative filepath the
-		// file would be written to SERVER_ROOT in the destructor.
+		// file would be written to SERVER_ROOT in the save() method (which
+		// is called in the parent destructor).
 		$this->file = realpath($this->file);
 	}
 
