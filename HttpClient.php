@@ -34,8 +34,8 @@ class HttpClient
 	 */
 	public function get($url)
 	{
-		if (empty($url))
-			throw new InvalidArgumentException('Empty string given.');
+		if (empty($url) || !is_string($url))
+			throw new InvalidArgumentException('Invalid URL given. Must be a non-empty string.');
 
 		$this->status = NULL;
 		$this->response = @file_get_contents($url);

@@ -49,8 +49,8 @@ class Core
 	 */
 	function __construct($feedUrl)
 	{
-		if (empty($feedUrl))
-			throw new InvalidArgumentException('Empty string given.');
+		if (empty($feedUrl) || !is_string($feedUrl))
+			throw new InvalidArgumentException('Invalid feed URL given. Must be a non-empty string.');
 
 		$this->feedUrl = $feedUrl;
 
