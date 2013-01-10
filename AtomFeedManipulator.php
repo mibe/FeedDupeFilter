@@ -1,7 +1,16 @@
 <?php
 
+/**
+ * Represents a class for manipulating XML feeds in ATOM format.
+ *
+ * @author Michael Bemmerl <mail@mx-server.de>
+ * @copyright Copyright (C) 2013 Michael Bemmerl
+ */
 class AtomFeedManipulator extends FeedManipulatorBase
 {
+	/**
+	 * {@inheritdoc}
+	 */
 	public function isSupported()
 	{
 		$feed = $this->feed->getElementsByTagName('feed');
@@ -14,6 +23,9 @@ class AtomFeedManipulator extends FeedManipulatorBase
 		return $xmlns == 'http://www.w3.org/2005/Atom';
 	}
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function parseFeed()
 	{
 		$items = $this->feed->getElementsByTagName('entry');

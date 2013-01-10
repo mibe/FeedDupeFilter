@@ -14,6 +14,18 @@ require('Rss1FeedManipulator.php');
 
 require('HttpClient.php');
 
+/**
+ * Main class for filtering duplicated entries in RSS / ATOM feeds.
+ *
+ * The feed is loaded from the remote server and the XML parsed by PHP's
+ * DOMDocument class. Then every feed entry is checked against an archive
+ * to detect, if the feed entry was already seen. If this is true, the entry
+ * would be removed from the feed. After every entry is checked, the possibly
+ * altered feed XML is build again and sent to the client.
+ *
+ * @author Michael Bemmerl <mail@mx-server.de>
+ * @copyright Copyright (C) 2013 Michael Bemmerl
+ */
 class Core
 {
 	private $feedUrl;
@@ -21,8 +33,20 @@ class Core
 	private $http;
 	private $feedManipulator;
 
+	/**
+	 * List of feed manipulators which should be probed and used to
+	 * manipulate the feed.
+	 *
+	 * @static
+	 * @var array
+	 */
 	public static $manipulatorClasses = array('Rss2', 'Atom', 'Rss1');
 
+	/**
+	 * Constructor of the class. Needs the URL of the feed.
+	 *
+	 * @param string $feedUrl URL to the feed which should be filtered.
+	 */
 	function __construct($feedUrl)
 	{
 		if (empty($feedUrl))
@@ -34,10 +58,21 @@ class Core
 		$this->archive = new FileArchive($feedUrl);
 		$this->http = new HttpClient();
 
+		// Download the feed and check if a manipulator supports it
 		$this->fetchFeed();
 		$this->detectManipulator();
 	}
 
+	/**
+	 * Tries to detect the appropriate feed manipulator which can handle the 
+	 * downloaded feed, depending on the type of the feed.
+	 *
+	 * Every class name in the {@link $manipulatorClasses} array will be
+	 * instantiated and probed if it supports the feed type.
+	 *
+	 * If the XML of the feed could not be parsed properly an exception with
+	 * more information about the cause will be thrown.
+	 */
 	private function detectManipulator()
 	{
 		$lastLoadingError = '';
@@ -73,6 +108,12 @@ class Core
 		throw new ErrorException($msg, 501);
 	}
 
+	/**
+	 * Retrieve the feed from the remote server.
+	 *
+	 * If the feed could not be downloaded an exception will be thrown with
+	 * information about the cause.
+	 */
 	private function fetchFeed()
 	{
 		// Retrieve Feed
@@ -90,8 +131,15 @@ class Core
 		}
 	}
 
+	/**
+	 * Filter out duplicated items in the feed. The resulting feed is directly sent to the client.
+	 *
+	 * The same Content-Type header field as the original feed had is also set so
+	 * the MIME type (and encoding) the remote server used isn't lost.
+	 */
 	public function filter()
 	{
+		// Parse the feed and extract all items.
 		$this->feedManipulator->parseFeed();
 
 		foreach($this->feedManipulator as $item)
@@ -107,11 +155,18 @@ class Core
 		}
 
 		// Filtering is done, now build and output the altered feed.
-		// Also use the same Content-Type of the feed, so the encoding won't get lost.
+		// Also use the same Content-Type of the feed, so the MIME type
+		// (and encoding) won't get lost.
 		header('Content-Type: ' . $this->http->contentType);
 		print $this->feedManipulator->buildFeed();
 	}
 
+	/**
+	 * Generate an unique identifier from the feed item.
+	 *
+	 * @param FeedItemBase $feedItem 
+	 * @return string
+	 */
 	private function buildUniqueId(FeedItemBase $feedItem)
 	{
 		return sha1($feedItem->title);

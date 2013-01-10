@@ -1,14 +1,29 @@
 <?php
 
+/**
+ * Implements an archive which is stored in the local filesystem.
+ *
+ * The archive identifier is stripped from any non-latin char
+ * and used as the file name.
+ *
+ * @author Michael Bemmerl <mail@mx-server.de>
+ * @copyright Copyright (C) 2013 Michael Bemmerl
+ */
 class FileArchive extends ArchiveBase
 {
 	private $file;
 
+	/**
+	 * {@inheritdoc}
+	 */
 	function __construct($archiveIdentifier)
 	{
 		parent::__construct($archiveIdentifier);
 	}
 
+	/**
+	 * Generates the filename from the archive identifier.
+	 */
 	private function buildFilename()
 	{
 		// Replace all characters which are not digits and latin chars with a dash
@@ -19,6 +34,11 @@ class FileArchive extends ArchiveBase
 			$this->file = substr($this->file, -200);
 	}
 
+	/**
+	 * {@inheritdoc}
+	 *
+	 * If the archive file does not exist, it will be automatically created.
+	 */
 	protected function load()
 	{
 		if (empty($this->file))
@@ -42,6 +62,11 @@ class FileArchive extends ArchiveBase
 		$this->file = realpath($this->file);
 	}
 
+	/**
+	 * {@inheritdoc}
+	 *
+	 * Throws an exception if the file could not be written.
+	 */
 	protected function save()
 	{
 		if (empty($this->file))

@@ -1,7 +1,16 @@
 <?php
 
+/**
+ * Represents a class for manipulating XML feeds in RSS 2.0 format.
+ *
+ * @author Michael Bemmerl <mail@mx-server.de>
+ * @copyright Copyright (C) 2013 Michael Bemmerl
+ */
 class Rss2FeedManipulator extends FeedManipulatorBase
 {
+	/**
+	 * {@inheritdoc}
+	 */
 	public function isSupported()
 	{
 		$rss = $this->feed->getElementsByTagName('rss');
@@ -14,6 +23,9 @@ class Rss2FeedManipulator extends FeedManipulatorBase
 		return $version == '2.0';
 	}
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function parseFeed()
 	{
 		$items = $this->feed->getElementsByTagName('item');

@@ -1,7 +1,16 @@
 <?php
 
+/**
+ * Represents a class for manipulating XML feeds in RSS 1.0 format.
+ *
+ * @author Michael Bemmerl <mail@mx-server.de>
+ * @copyright Copyright (C) 2013 Michael Bemmerl
+ */
 class Rss1FeedManipulator extends FeedManipulatorBase
 {
+	/**
+	 * {@inheritdoc}
+	 */
 	public function isSupported()
 	{
 		$rdf = $this->feed->documentElement;
@@ -12,6 +21,9 @@ class Rss1FeedManipulator extends FeedManipulatorBase
 		return $rdf->isDefaultNamespace('http://purl.org/rss/1.0/');
 	}
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function parseFeed()
 	{
 		$items = $this->feed->getElementsByTagName('item');

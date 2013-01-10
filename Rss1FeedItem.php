@@ -1,12 +1,24 @@
 <?php
 
+/**
+ * Represents an feed item in RSS 1.0 format.
+ *
+ * @author Michael Bemmerl <mail@mx-server.de>
+ * @copyright Copyright (C) 2013 Michael Bemmerl
+ */
 class Rss1FeedItem extends FeedItemBase
 {
+	/**
+	 * {@inheritdoc}
+	 */
 	public function __construct(DOMElement $xmlElement)
 	{
 		parent::__construct($xmlElement);
 	}
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function parseXml()
 	{
 		$this->title = $this->getXmlChildValue('title');
