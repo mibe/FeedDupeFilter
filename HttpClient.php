@@ -67,6 +67,10 @@ class HttpClient
 
 		// Content-Type: text/html; charset=UTF-8
 		$this->parseResponseHeaderEntry('/^Content-Type: (.+)$/', $this->contentType, $header);
+
+		// Cast the status code to integer. The regex has secured that this is an integer.
+		if ($this->status != NULL)
+			$this->status = (int)$this->status;
 	}
 
 	/**
