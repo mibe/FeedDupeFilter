@@ -25,7 +25,7 @@ if (!isset($_GET['feed']))
 
 $feed = $_GET['feed'];
 
-require('Core.php');
+require('src/Core.php');
 
 try
 {
