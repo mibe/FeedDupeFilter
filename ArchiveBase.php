@@ -9,7 +9,7 @@
  * @author Michael Bemmerl <mail@mx-server.de>
  * @copyright Copyright (C) 2013 Michael Bemmerl
  */
-abstract class ArchiveBase
+abstract class ArchiveBase implements Countable
 {
 	protected $contents;
 	protected $archiveIdentifier;
@@ -97,5 +97,15 @@ abstract class ArchiveBase
 	public function clear()
 	{
 		$this->contents = array();
+	}
+
+	/**
+	 * Returns the number of entries in the archive.
+	 *
+	 * @return int
+	 */
+	public function count()
+	{
+		return count($this->contents);
 	}
 }
