@@ -3,9 +3,6 @@
 /**
  * Respresents a single entry of an feed.
  *
- * This class is abstract: The method {@link parseXml()} must be implemented
- * in subclasses.
- *
  * @author Michael Bemmerl <mail@mx-server.de>
  * @copyright Copyright (C) 2013 Michael Bemmerl
  */
@@ -14,35 +11,35 @@ abstract class FeedItemBase
 	/**
 	 * Title of the entry. NULL if not available.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
 	public $title;
 
 	/**
 	 * Description of the entry. NULL if not available.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
 	public $description;
 
 	/**
 	 * Date of the entry. NULL if not available.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
 	public $date;
 
 	/**
 	 * Link of the entry. NULL if not available.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
 	public $link;
 
 	/**
 	 * ID of the entry. NULL if not available.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
 	public $id;
 
@@ -56,7 +53,7 @@ abstract class FeedItemBase
 	/**
 	 * Constructor of the class.
 	 *
-	 * @param DOMElement
+	 * @param DOMElement Corresponding XML element containing the feed entry.
 	 */
 	function __construct(DOMElement $xmlElement)
 	{
@@ -65,6 +62,8 @@ abstract class FeedItemBase
 
 	/**
 	 * Parses the XML of the feed entry.
+	 *
+	 * In this function the public fields are filled.
 	 *
 	 * @return void
 	 */

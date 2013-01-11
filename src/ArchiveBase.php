@@ -3,15 +3,23 @@
 /**
  * Represents an data archive which contains different items.
  *
- * This class is abstract; the methods {@link load()} and {@link save()} have to be
- * implemented in subclasses.
- *
  * @author Michael Bemmerl <mail@mx-server.de>
  * @copyright Copyright (C) 2013 Michael Bemmerl
  */
 abstract class ArchiveBase implements Countable
 {
+	/**
+	 * Contents of the archive.
+	 *
+	 * @var array
+	 */
 	protected $contents;
+
+	/**
+	 * Identifier of the archive.
+	 *
+	 * @var string
+	 */
 	protected $archiveIdentifier;
 
 	/**
@@ -40,9 +48,10 @@ abstract class ArchiveBase implements Countable
 	 * Destructor of the class. Saves the archive back to its storage medium.
 	 *
 	 * The saving is done in the subclass, which implements the abstract
-	 * {@link save()} method.
+	 * save() method.
 	 *
 	 * @return void
+	 * @see save()
 	 */
 	function __destruct()
 	{

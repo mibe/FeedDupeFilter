@@ -28,9 +28,33 @@ require('HttpClient.php');
  */
 class Core
 {
+	/**
+	 * URL of the original feed.
+	 *
+	 * @var string
+	 */
 	private $feedUrl;
+
+	/**
+	 * Instance of the used archive.
+	 *
+	 * @see ArchiveBase
+	 * @var ArchiveBase
+	 */
 	private $archive;
+
+	/**
+	 * Instance of the HTTP client.
+	 *
+	 * @var HttpClient
+	 */
 	private $http;
+
+	/**
+	 * Instance of the manipulator used to alter the feed.
+	 *
+	 * @var FeedManipulatorBase
+	 */
 	private $feedManipulator;
 
 	/**
@@ -67,13 +91,14 @@ class Core
 	 * Tries to detect the appropriate feed manipulator which can handle the 
 	 * downloaded feed, depending on the type of the feed.
 	 *
-	 * Every class name in the {@link $manipulatorClasses} array will be
+	 * Every class name in the $manipulatorClasses array will be
 	 * instantiated and probed if it supports the feed type.
 	 *
 	 * If the XML of the feed could not be parsed properly an exception with
 	 * more information about the cause will be thrown.
 	 *
 	 * @return void
+	 * @see $manipulatorClasses
 	 */
 	private function detectManipulator()
 	{

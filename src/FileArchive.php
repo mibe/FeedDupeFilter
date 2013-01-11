@@ -11,6 +11,14 @@
  */
 class FileArchive extends ArchiveBase
 {
+	/**
+	 * Path to the file, which contains the archive.
+	 *
+	 * Is filled in the buildFilename() method.
+	 *
+	 * @var string
+	 * @see buildFilename()
+	 */
 	private $file;
 
 	/**

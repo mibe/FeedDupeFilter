@@ -3,9 +3,6 @@
 /**
  * Represents a class for manipulating XML feeds.
  *
- * This class is abstract; the methods {@link isSupported()} and {@link parseFeed()}
- * must be implemented in subclasses.
- *
  * @author Michael Bemmerl <mail@mx-server.de>
  * @copyright Copyright (C) 2013 Michael Bemmerl
  */
@@ -46,12 +43,17 @@ abstract class FeedManipulatorBase implements IteratorAggregate, Countable
 	/**
 	 * Error handler when loading the feed XML.
 	 *
-	 * This handler is set and unset in {@link loadFeed()} to catch errors
+	 * This handler is set and unset in loadFeed() to catch errors
 	 * which occurred during parsing of the XML document in DOMDocument.
 	 * The error message is extracted from the error string by using an
-	 * regular expression and stored in the {@link loadingError} field.
+	 * regular expression and stored in the loadingError() field.
 	 *
+	 * @param int
+	 * @param string
 	 * @return false|void
+	 * @see set_error_handler()
+	 * @see loadFeed()
+	 * @see $loadingError
 	 */
 	public function xmlErrorHandler($code, $message)
 	{
@@ -75,7 +77,7 @@ abstract class FeedManipulatorBase implements IteratorAggregate, Countable
 	 *
 	 * Throws an exception if the feed is empty or not a string.
 	 *
-	 * @param string
+	 * @param string The feed to be loaded.
 	 * @return bool
 	 */
 	public function loadFeed($rawFeed)
@@ -124,7 +126,7 @@ abstract class FeedManipulatorBase implements IteratorAggregate, Countable
 	/**
 	 * Returns if this feed manipulator is capable of manipulating the given feed.
 	 *
-	 * @return bool
+	 * @return bool TRUE if this instance support the type of feed.
 	 */
 	abstract public function isSupported();
 
@@ -138,9 +140,10 @@ abstract class FeedManipulatorBase implements IteratorAggregate, Countable
 	/**
 	 * Returns an Iterator instance for iterating the feed entries.
 	 *
-	 * Do not call offsetUnset(). Use {@link removeItem()} instead.
+	 * Do not call offsetUnset(). Use removeItem() instead.
 	 *
 	 * @return ArrayIterator
+	 * @see removeItem()
 	 */
 	public function getIterator()
 	{
