@@ -1,4 +1,5 @@
 <?php
+namespace FeedDupeFilter\Feed;
 
 /**
  * Represents an feed item in RSS 2.0 format.
@@ -11,7 +12,7 @@ class Rss2FeedItem extends FeedItemBase
 	/**
 	 * {@inheritdoc}
 	 */
-	public function __construct(DOMElement $xmlElement)
+	public function __construct(\DOMElement $xmlElement)
 	{
 		parent::__construct($xmlElement);
 	}

@@ -1,4 +1,5 @@
 <?php
+namespace FeedDupeFilter\Feed;
 
 /**
  * Respresents a single entry of an feed.
@@ -55,7 +56,7 @@ abstract class FeedItemBase
 	 *
 	 * @param DOMElement Corresponding XML element containing the feed entry.
 	 */
-	function __construct(DOMElement $xmlElement)
+	function __construct(\DOMElement $xmlElement)
 	{
 		$this->xmlElement = $xmlElement;
 	}
@@ -80,7 +81,7 @@ abstract class FeedItemBase
 	private function getXmlChild($name)
 	{
 		if (empty($name) || !is_string($name))
-			throw new InvalidArgumentException('Invalid tag name given. Must be a non-empty string.');
+			throw new \InvalidArgumentException('Invalid tag name given. Must be a non-empty string.');
 
 		$list = $this->xmlElement->getElementsByTagName($name);
 
@@ -98,7 +99,7 @@ abstract class FeedItemBase
 	protected function getXmlChildValue($name)
 	{
 		if (empty($name) || !is_string($name))
-			throw new InvalidArgumentException('Invalid tag name given. Must be a non-empty string.');
+			throw new \InvalidArgumentException('Invalid tag name given. Must be a non-empty string.');
 
 		$child = $this->getXmlChild($name);
 
@@ -117,10 +118,10 @@ abstract class FeedItemBase
 	protected function getXmlChildAttributeValue($name, $attributeName)
 	{
 		if (empty($name) || !is_string($name))
-			throw new InvalidArgumentException('Invalid tag name given. Must be a non-empty string.');
+			throw new \InvalidArgumentException('Invalid tag name given. Must be a non-empty string.');
 
 		if (empty($attributeName) || !is_string($attributeName))
-			throw new InvalidArgumentException('Invalid attribute name given. Must be a non-empty string.');
+			throw new \InvalidArgumentException('Invalid attribute name given. Must be a non-empty string.');
 
 		$child = $this->getXmlChild($name);
 

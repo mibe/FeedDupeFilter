@@ -1,4 +1,5 @@
 <?php
+namespace FeedDupeFilter\Feed;
 
 /**
  * Represents a class for manipulating XML feeds in ATOM format.

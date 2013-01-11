@@ -1,4 +1,5 @@
 <?php
+namespace FeedDupeFilter\Feed;
 
 /**
  * Represents an feed item in ATOM format.
@@ -11,7 +12,7 @@ class AtomFeedItem extends FeedItemBase
 	/**
 	 * {@inheritdoc}
 	 */
-	public function __construct(DOMElement $xmlElement)
+	public function __construct(\DOMElement $xmlElement)
 	{
 		parent::__construct($xmlElement);
 	}

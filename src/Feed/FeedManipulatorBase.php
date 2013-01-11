@@ -1,4 +1,5 @@
 <?php
+namespace FeedDupeFilter\Feed;
 
 /**
  * Represents a class for manipulating XML feeds.
@@ -6,7 +7,7 @@
  * @author Michael Bemmerl <mail@mx-server.de>
  * @copyright Copyright (C) 2013 Michael Bemmerl
  */
-abstract class FeedManipulatorBase implements IteratorAggregate, Countable
+abstract class FeedManipulatorBase implements \IteratorAggregate, \Countable
 {
 	/**
 	 * The DOM structure of the feed.
@@ -83,11 +84,11 @@ abstract class FeedManipulatorBase implements IteratorAggregate, Countable
 	public function loadFeed($rawFeed)
 	{
 		if (empty($rawFeed) || !is_string($rawFeed))
-			throw new InvalidArgumentException('Invalid feed given. Must be a non-empty string.');
+			throw new \InvalidArgumentException('Invalid feed given. Must be a non-empty string.');
 
 		set_error_handler(array(&$this, 'xmlErrorHandler'));
 
-		$this->feed = new DOMDocument();
+		$this->feed = new \DOMDocument();
 		$this->feed->preserveWhitespace = FALSE;
 
 		$result = $this->feed->loadXML($rawFeed);
@@ -147,7 +148,7 @@ abstract class FeedManipulatorBase implements IteratorAggregate, Countable
 	 */
 	public function getIterator()
 	{
-		return new ArrayIterator($this->items);
+		return new \ArrayIterator($this->items);
 	}
 
 	/**

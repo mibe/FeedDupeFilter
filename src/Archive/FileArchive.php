@@ -1,4 +1,5 @@
 <?php
+namespace FeedDupeFilter\Archive;
 
 /**
  * Implements an archive which is stored in the local filesystem.
@@ -91,6 +92,6 @@ class FileArchive extends ArchiveBase
 		$bytes = file_put_contents($this->file, $data);
 
 		if ($bytes === FALSE)
-			throw new Exception(sprintf('Could not write archive to file "%s".', $this->file));
+			throw new \Exception(sprintf('Could not write archive to file "%s".', $this->file));
 	}
 }

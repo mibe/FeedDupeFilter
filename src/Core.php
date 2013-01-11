@@ -1,18 +1,25 @@
 <?php
+namespace FeedDupeFilter;
 
-require('ArchiveBase.php');
-require('FileArchive.php');
+require('Archive\ArchiveBase.php');
+require('Archive\FileArchive.php');
 
-require('FeedItemBase.php');
-require('Rss2FeedItem.php');
-require('AtomFeedItem.php');
-require('Rss1FeedItem.php');
-require('FeedManipulatorBase.php');
-require('Rss2FeedManipulator.php');
-require('AtomFeedManipulator.php');
-require('Rss1FeedManipulator.php');
+require('Feed\FeedItemBase.php');
+require('Feed\FeedManipulatorBase.php');
+
+require('Feed\Rss2FeedItem.php');
+require('Feed\Rss2FeedManipulator.php');
+
+require('Feed\Rss1FeedItem.php');
+require('Feed\Rss1FeedManipulator.php');
+
+require('Feed\AtomFeedItem.php');
+require('Feed\AtomFeedManipulator.php');
 
 require('HttpClient.php');
+
+use FeedDupeFilter\Archive\FileArchive;
+use FeedDupeFilter\Feed\FeedItemBase;
 
 /**
  * Main class for filtering duplicated entries in RSS / ATOM feeds.
@@ -74,7 +81,7 @@ class Core
 	function __construct($feedUrl)
 	{
 		if (empty($feedUrl) || !is_string($feedUrl))
-			throw new InvalidArgumentException('Invalid feed URL given. Must be a non-empty string.');
+			throw new \InvalidArgumentException('Invalid feed URL given. Must be a non-empty string.');
 
 		$this->feedUrl = $feedUrl;
 
@@ -106,7 +113,7 @@ class Core
 
 		foreach(self::$manipulatorClasses as $class)
 		{
-			$className = $class . 'FeedManipulator';
+			$className = 'FeedDupeFilter\\Feed\\' . $class . 'FeedManipulator';
 			$instance = new $className();
 			$loaded = $instance->loadFeed($this->http->response);
 
@@ -132,7 +139,7 @@ class Core
 			$msg .= sprintf(' Last error message of the XML parser was: %s', $lastLoadingError);
 
 		// Impossible to work without a manipulator.
-		throw new ErrorException($msg, 501);
+		throw new \ErrorException($msg, 501);
 	}
 
 	/**
@@ -151,12 +158,12 @@ class Core
 		if ($result === FALSE || $this->http->status != 200)
 		{
 			$msg = sprintf('Error retrieving feed URL "%s" (HTTP Status: %d).', $this->feedUrl, $this->http->status);
-			throw new ErrorException($msg, 500);
+			throw new \ErrorException($msg, 500);
 		}
 		else if (empty($this->http->response))
 		{
 			$msg = sprintf('The retrieved feed was empty. (HTTP Status: %d).', $this->http->status);
-			throw new ErrorException($msg, 500);
+			throw new \ErrorException($msg, 500);
 		}
 	}
 

@@ -1,4 +1,5 @@
 <?php
+namespace FeedDupeFilter;
 
 /**
  * A simple HTTP client.

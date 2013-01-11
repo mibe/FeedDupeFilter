@@ -29,7 +29,7 @@ require('src/Core.php');
 
 try
 {
-	$core = new Core($feed);
+	$core = new FeedDupeFilter\Core($feed);
 	$core->filter();
 }
 catch (Exception $ex)

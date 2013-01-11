@@ -1,4 +1,5 @@
 <?php
+namespace FeedDupeFilter\Archive;
 
 /**
  * Represents an data archive which contains different items.
@@ -6,7 +7,7 @@
  * @author Michael Bemmerl <mail@mx-server.de>
  * @copyright Copyright (C) 2013 Michael Bemmerl
  */
-abstract class ArchiveBase implements Countable
+abstract class ArchiveBase implements \Countable
 {
 	/**
 	 * Contents of the archive.
@@ -36,7 +37,7 @@ abstract class ArchiveBase implements Countable
 	function __construct($archiveIdentifier)
 	{
 		if (empty($archiveIdentifier) || !is_string($archiveIdentifier))
-			throw new InvalidArgumentException('Invalid archiveIdentifier given. Must be a non-empty string.');
+			throw new \InvalidArgumentException('Invalid archiveIdentifier given. Must be a non-empty string.');
 
 		$this->archiveIdentifier = $archiveIdentifier;
 

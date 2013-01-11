@@ -1,4 +1,5 @@
 <?php
+namespace FeedDupeFilter\Feed;
 
 /**
  * Represents a class for manipulating XML feeds in RSS 2.0 format.
