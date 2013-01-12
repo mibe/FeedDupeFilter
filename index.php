@@ -37,9 +37,6 @@ function fdf_autoloader($className)
 	// Root dir
 	$dir = __DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR;
 
-	// We don't need the vendor part of the namespace here.
-	$className = str_replace('FeedDupeFilter\\', '', $className);
-
 	$fileName  = '';
 	$namespace = '';
 
