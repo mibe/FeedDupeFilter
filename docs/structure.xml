@@ -1,0 +1,1172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project version="2.0.0a12" title="">
+  <file path="Archive/ArchiveBase.php" hash="e7fc04e72305284d7dc982eb121d24aa" package="Default">
+    <class final="false" abstract="true" namespace="FeedDupeFilter\Archive" line="10" package="Default">
+      <extends/>
+      <implements>\Countable</implements>
+      <name>ArchiveBase</name>
+      <full_name>\FeedDupeFilter\Archive\ArchiveBase</full_name>
+      <docblock line="4">
+        <description>Represents an data archive which contains different items.</description>
+        <long-description/>
+        <tag line="4" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
+        <tag line="4" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="17" namespace="FeedDupeFilter\Archive" package="Default">
+        <name>$contents</name>
+        <default/>
+        <docblock line="12">
+          <description>Contents of the archive.</description>
+          <long-description/>
+          <tag line="12" name="var" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="24" namespace="FeedDupeFilter\Archive" package="Default">
+        <name>$archiveIdentifier</name>
+        <default/>
+        <docblock line="19">
+          <description>Identifier of the archive.</description>
+          <long-description/>
+          <tag line="19" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Archive" line="37" package="Default">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="26">
+          <description>Constructor of the class.</description>
+          <long-description>&lt;p&gt;Needs an archive identifier, which is used to
+uniquely identify any archive.&lt;/p&gt;
+
+&lt;p&gt;The archive is loaded in the constructor. The loading takes place in the
+subclasses, which implement the two abstract methods.&lt;/p&gt;
+
+&lt;p&gt;Throws an exception, if the identifier is empty or not a string.&lt;/p&gt;</long-description>
+          <tag line="26" name="param" description="Identifier of the archive" type="string" variable="$archiveIdentifier">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="37">
+          <name>$archiveIdentifier</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Archive" line="57" package="Default">
+        <name>__destruct</name>
+        <full_name>__destruct</full_name>
+        <docblock line="48">
+          <description>Destructor of the class.</description>
+          <long-description>&lt;p&gt;Saves the archive back to its storage medium.&lt;/p&gt;
+
+&lt;p&gt;The saving is done in the subclass, which implements the abstract
+save() method.&lt;/p&gt;</long-description>
+          <tag line="48" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+          <tag line="48" name="see" description="\FeedDupeFilter\Archive\save()" refers="\FeedDupeFilter\Archive\save()"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="protected" namespace="FeedDupeFilter\Archive" line="67" package="Default">
+        <name>load</name>
+        <full_name>load</full_name>
+        <docblock line="62">
+          <description>Loads the archive.</description>
+          <long-description/>
+          <tag line="62" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="protected" namespace="FeedDupeFilter\Archive" line="74" package="Default">
+        <name>save</name>
+        <full_name>save</full_name>
+        <docblock line="69">
+          <description>Saves the archive.</description>
+          <long-description/>
+          <tag line="69" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Archive" line="84" package="Default">
+        <name>add</name>
+        <full_name>add</full_name>
+        <docblock line="76">
+          <description>Add an entry to the archive.</description>
+          <long-description>&lt;p&gt;The entry is checked against duplicates.&lt;/p&gt;</long-description>
+          <tag line="76" name="param" description="" type="string" variable="$uid">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="76" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+        <argument line="84">
+          <name>$uid</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Archive" line="96" package="Default">
+        <name>remove</name>
+        <full_name>remove</full_name>
+        <docblock line="90">
+          <description>Remove an element from the archive.</description>
+          <long-description/>
+          <tag line="90" name="param" description="" type="string" variable="$uid">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="90" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+        <argument line="96">
+          <name>$uid</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Archive" line="108" package="Default">
+        <name>contains</name>
+        <full_name>contains</full_name>
+        <docblock line="102">
+          <description>Check if the archive already contains an specified element.</description>
+          <long-description/>
+          <tag line="102" name="param" description="" type="string" variable="$uid">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="102" name="return" description="TRUE if the element is already in the archive." type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+        </docblock>
+        <argument line="108">
+          <name>$uid</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Archive" line="118" package="Default">
+        <name>clear</name>
+        <full_name>clear</full_name>
+        <docblock line="113">
+          <description>Remove every element in the archive.</description>
+          <long-description>&lt;p&gt;The archive will be empty after that.&lt;/p&gt;</long-description>
+          <tag line="113" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Archive" line="128" package="Default">
+        <name>count</name>
+        <full_name>count</full_name>
+        <docblock line="123">
+          <description>Returns the number of entries in the archive.</description>
+          <long-description/>
+          <tag line="123" name="return" description="" type="int">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file Archive/ArchiveBase.php</error>
+    </parse_markers>
+  </file>
+  <file path="Archive/FileArchive.php" hash="ec54a877127ed9b50f06d10e01062781" package="Default">
+    <class final="false" abstract="false" namespace="FeedDupeFilter\Archive" line="13" package="Default">
+      <extends>\FeedDupeFilter\Archive\ArchiveBase</extends>
+      <name>FileArchive</name>
+      <full_name>\FeedDupeFilter\Archive\FileArchive</full_name>
+      <docblock line="4">
+        <description>Implements an archive which is stored in the local filesystem.</description>
+        <long-description>&lt;p&gt;The archive identifier is stripped from any non-latin char
+and used as the file name.&lt;/p&gt;</long-description>
+        <tag line="4" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
+        <tag line="4" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="23" namespace="FeedDupeFilter\Archive" package="Default">
+        <name>$file</name>
+        <default/>
+        <docblock line="15">
+          <description>Path to the file, which contains the archive.</description>
+          <long-description>&lt;p&gt;Is filled in the buildFilename() method.&lt;/p&gt;</long-description>
+          <tag line="15" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="15" name="see" description="\FeedDupeFilter\Archive\buildFilename()" refers="\FeedDupeFilter\Archive\buildFilename()"/>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Archive" line="31" package="Default">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="25">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+          <tag line="25" name="param" description="Identifier of the archive." type="string" variable="$archiveIdentifier">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="25" name="param" description="Directory in which the archive files are stored." type="string" variable="$directory">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="31">
+          <name>$archiveIdentifier</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="31">
+          <name>$directory</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="FeedDupeFilter\Archive" line="47" package="Default">
+        <name>buildFilename</name>
+        <full_name>buildFilename</full_name>
+        <docblock line="38">
+          <description>Generates the filename from the archive identifier.</description>
+          <long-description>&lt;p&gt;Throws an exception if the given directory is not writeable.&lt;/p&gt;</long-description>
+          <tag line="38" name="param" description="Identifier of the archive." type="string" variable="$archiveIdentifier">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="38" name="param" description="Directory, in which the archive file is stored." type="string" variable="$directory">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="38" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+        <argument line="47">
+          <name>$archiveIdentifier</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="47">
+          <name>$directory</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="FeedDupeFilter\Archive" line="73" package="Default">
+        <name>load</name>
+        <full_name>load</full_name>
+        <docblock line="66">
+          <description>{@inheritdoc}</description>
+          <long-description>&lt;p&gt;If the archive file does not exist, it will be automatically created.&lt;/p&gt;</long-description>
+          <tag line="66" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="FeedDupeFilter\Archive" line="96" package="Default">
+        <name>save</name>
+        <full_name>save</full_name>
+        <docblock line="89">
+          <description>{@inheritdoc}</description>
+          <long-description>&lt;p&gt;Throws an exception if the file could not be written.&lt;/p&gt;</long-description>
+          <tag line="89" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file Archive/FileArchive.php</error>
+    </parse_markers>
+  </file>
+  <file path="Core.php" hash="3e7ab73ec3665e83acfb2db26bb28a8d" package="Default">
+    <class final="false" abstract="false" namespace="FeedDupeFilter" line="19" package="Default">
+      <extends/>
+      <name>Core</name>
+      <full_name>\FeedDupeFilter\Core</full_name>
+      <docblock line="7">
+        <description>Main class for filtering duplicated entries in RSS / ATOM feeds.</description>
+        <long-description>&lt;p&gt;The feed is loaded from the remote server and the XML parsed by PHP's
+DOMDocument class. Then every feed entry is checked against an archive
+to detect, if the feed entry was already seen. If this is true, the entry
+would be removed from the feed. After every entry is checked, the possibly
+altered feed XML is build again and sent to the client.&lt;/p&gt;</long-description>
+        <tag line="7" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
+        <tag line="7" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="26" namespace="FeedDupeFilter" package="Default">
+        <name>$feedUrl</name>
+        <default/>
+        <docblock line="21">
+          <description>URL of the original feed.</description>
+          <long-description/>
+          <tag line="21" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="34" namespace="FeedDupeFilter" package="Default">
+        <name>$archive</name>
+        <default/>
+        <docblock line="28">
+          <description>Instance of the used archive.</description>
+          <long-description/>
+          <tag line="28" name="see" description="\FeedDupeFilter\Archive\ArchiveBase" refers="\FeedDupeFilter\Archive\ArchiveBase"/>
+          <tag line="28" name="var" description="" type="\FeedDupeFilter\Archive\ArchiveBase">
+            <type by_reference="false">\FeedDupeFilter\Archive\ArchiveBase</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="41" namespace="FeedDupeFilter" package="Default">
+        <name>$http</name>
+        <default/>
+        <docblock line="36">
+          <description>Instance of the HTTP client.</description>
+          <long-description/>
+          <tag line="36" name="var" description="" type="\FeedDupeFilter\HttpClient">
+            <type by_reference="false">\FeedDupeFilter\HttpClient</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="48" namespace="FeedDupeFilter" package="Default">
+        <name>$feedManipulator</name>
+        <default/>
+        <docblock line="43">
+          <description>Instance of the manipulator used to alter the feed.</description>
+          <long-description/>
+          <tag line="43" name="var" description="" type="\FeedDupeFilter\FeedManipulatorBase">
+            <type by_reference="false">\FeedDupeFilter\FeedManipulatorBase</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="true" visibility="public" line="57" namespace="FeedDupeFilter" package="Default">
+        <name>$manipulatorClasses</name>
+        <default>array('Rss2', 'Atom', 'Rss1')</default>
+        <docblock line="50">
+          <description>List of feed manipulators which should be probed and used to
+manipulate the feed.</description>
+          <long-description/>
+          <tag line="50" name="static" description=""/>
+          <tag line="50" name="var" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter" line="65" package="Default">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="59">
+          <description>Constructor of the class.</description>
+          <long-description>&lt;p&gt;Needs the URL of the feed.&lt;/p&gt;</long-description>
+          <tag line="59" name="param" description="URL to the feed which should be filtered." type="string" variable="$feedUrl">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="59" name="param" description="Instance of an archive which implements ArchiveBase." type="\FeedDupeFilter\Archive\ArchiveBase" variable="$archive">
+            <type by_reference="false">\FeedDupeFilter\Archive\ArchiveBase</type>
+          </tag>
+        </docblock>
+        <argument line="65">
+          <name>$feedUrl</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="65">
+          <name>$archive</name>
+          <default/>
+          <type>\FeedDupeFilter\Archive\ArchiveBase</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="FeedDupeFilter" line="93" package="Default">
+        <name>detectManipulator</name>
+        <full_name>detectManipulator</full_name>
+        <docblock line="80">
+          <description>Tries to detect the appropriate feed manipulator which can handle the
+downloaded feed, depending on the type of the feed.</description>
+          <long-description>&lt;p&gt;Every class name in the $manipulatorClasses array will be
+instantiated and probed if it supports the feed type.&lt;/p&gt;
+
+&lt;p&gt;If the XML of the feed could not be parsed properly an exception with
+more information about the cause will be thrown.&lt;/p&gt;</long-description>
+          <tag line="80" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+          <tag line="80" name="see" description="\FeedDupeFilter\$manipulatorClasses" refers="\FeedDupeFilter\$manipulatorClasses"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="FeedDupeFilter" line="136" package="Default">
+        <name>fetchFeed</name>
+        <full_name>fetchFeed</full_name>
+        <docblock line="128">
+          <description>Retrieve the feed from the remote server.</description>
+          <long-description>&lt;p&gt;If the feed could not be downloaded an exception will be thrown with
+information about the cause.&lt;/p&gt;</long-description>
+          <tag line="128" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter" line="166" package="Default">
+        <name>filter</name>
+        <full_name>filter</full_name>
+        <docblock line="153">
+          <description>Filter out duplicated items in the feed.</description>
+          <long-description>&lt;p&gt;If the feed is sent to the client, the same Content-Type header field
+as the original feed had is set so the MIME type (and encoding)
+the remote server used isn't lost.&lt;/p&gt;
+
+&lt;p&gt;If the feed is not sent to the client, the resulting array contains the
+feed in the 'output' element and the header fields in the 'header' element.&lt;/p&gt;</long-description>
+          <tag line="153" name="param" description="TRUE if the feed is sent to the client." type="bool" variable="$directOutput">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="153" name="return" description="" type="void|array">
+            <type by_reference="false">void</type>
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="166">
+          <name>$directOutput</name>
+          <default>TRUE</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="FeedDupeFilter" line="207" package="Default">
+        <name>buildUniqueId</name>
+        <full_name>buildUniqueId</full_name>
+        <docblock line="201">
+          <description>Generate an unique identifier from the feed item.</description>
+          <long-description/>
+          <tag line="201" name="param" description="" type="\FeedDupeFilter\Feed\FeedItemBase" variable="$feedItem">
+            <type by_reference="false">\FeedDupeFilter\Feed\FeedItemBase</type>
+          </tag>
+          <tag line="201" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="207">
+          <name>$feedItem</name>
+          <default/>
+          <type>\FeedDupeFilter\Feed\FeedItemBase</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file Core.php</error>
+    </parse_markers>
+  </file>
+  <file path="Feed/AtomFeedItem.php" hash="66f687abf04ae5402e0c9dbdd38811cc" package="Default">
+    <class final="false" abstract="false" namespace="FeedDupeFilter\Feed" line="10" package="Default">
+      <extends>\FeedDupeFilter\Feed\FeedItemBase</extends>
+      <name>AtomFeedItem</name>
+      <full_name>\FeedDupeFilter\Feed\AtomFeedItem</full_name>
+      <docblock line="4">
+        <description>Represents an feed item in ATOM format.</description>
+        <long-description/>
+        <tag line="4" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
+        <tag line="4" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="15" package="Default">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="12">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="15">
+          <name>$xmlElement</name>
+          <default/>
+          <type>\DOMElement</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="23" package="Default">
+        <name>parseXml</name>
+        <full_name>parseXml</full_name>
+        <docblock line="20">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file Feed/AtomFeedItem.php</error>
+      <error line="12" code="50015">Argument $xmlElement is missing from the Docblock of __construct()</error>
+    </parse_markers>
+  </file>
+  <file path="Feed/AtomFeedManipulator.php" hash="b90006e3e0b61a475464981b753f5b78" package="Default">
+    <class final="false" abstract="false" namespace="FeedDupeFilter\Feed" line="10" package="Default">
+      <extends>\FeedDupeFilter\Feed\FeedManipulatorBase</extends>
+      <name>AtomFeedManipulator</name>
+      <full_name>\FeedDupeFilter\Feed\AtomFeedManipulator</full_name>
+      <docblock line="4">
+        <description>Represents a class for manipulating XML feeds in ATOM format.</description>
+        <long-description/>
+        <tag line="4" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
+        <tag line="4" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="15" package="Default">
+        <name>isSupported</name>
+        <full_name>isSupported</full_name>
+        <docblock line="12">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="30" package="Default">
+        <name>parseFeed</name>
+        <full_name>parseFeed</full_name>
+        <docblock line="27">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file Feed/AtomFeedManipulator.php</error>
+    </parse_markers>
+  </file>
+  <file path="Feed/FeedItemBase.php" hash="23bf375b7a7c35a68d1059ff6c12236b" package="Default">
+    <class final="false" abstract="true" namespace="FeedDupeFilter\Feed" line="10" package="Default">
+      <extends/>
+      <name>FeedItemBase</name>
+      <full_name>\FeedDupeFilter\Feed\FeedItemBase</full_name>
+      <docblock line="4">
+        <description>Respresents a single entry of an feed.</description>
+        <long-description></long-description>
+        <tag line="4" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
+        <tag line="4" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
+      </docblock>
+      <property final="false" static="false" visibility="public" line="17" namespace="FeedDupeFilter\Feed" package="Default">
+        <name>$title</name>
+        <default></default>
+        <docblock line="12">
+          <description>Title of the entry.</description>
+          <long-description>&lt;p&gt;NULL if not available.&lt;/p&gt;</long-description>
+          <tag line="12" name="var" description="" type="string|null">
+            <type by_reference="false">string</type>
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="public" line="24" namespace="FeedDupeFilter\Feed" package="Default">
+        <name>$description</name>
+        <default></default>
+        <docblock line="19">
+          <description>Description of the entry.</description>
+          <long-description>&lt;p&gt;NULL if not available.&lt;/p&gt;</long-description>
+          <tag line="19" name="var" description="" type="string|null">
+            <type by_reference="false">string</type>
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="public" line="31" namespace="FeedDupeFilter\Feed" package="Default">
+        <name>$date</name>
+        <default></default>
+        <docblock line="26">
+          <description>Date of the entry.</description>
+          <long-description>&lt;p&gt;NULL if not available.&lt;/p&gt;</long-description>
+          <tag line="26" name="var" description="" type="string|null">
+            <type by_reference="false">string</type>
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="public" line="38" namespace="FeedDupeFilter\Feed" package="Default">
+        <name>$link</name>
+        <default></default>
+        <docblock line="33">
+          <description>Link of the entry.</description>
+          <long-description>&lt;p&gt;NULL if not available.&lt;/p&gt;</long-description>
+          <tag line="33" name="var" description="" type="string|null">
+            <type by_reference="false">string</type>
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="public" line="45" namespace="FeedDupeFilter\Feed" package="Default">
+        <name>$id</name>
+        <default></default>
+        <docblock line="40">
+          <description>ID of the entry.</description>
+          <long-description>&lt;p&gt;NULL if not available.&lt;/p&gt;</long-description>
+          <tag line="40" name="var" description="" type="string|null">
+            <type by_reference="false">string</type>
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="public" line="52" namespace="FeedDupeFilter\Feed" package="Default">
+        <name>$xmlElement</name>
+        <default></default>
+        <docblock line="47">
+          <description>Corresponding XML element.</description>
+          <long-description></long-description>
+          <tag line="47" name="var" description="" type="\FeedDupeFilter\Feed\DOMElement">
+            <type by_reference="false">\FeedDupeFilter\Feed\DOMElement</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="59" package="Default">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="54">
+          <description>Constructor of the class.</description>
+          <long-description></long-description>
+          <tag line="54" name="param" description="Corresponding XML element containing the feed entry." type="\DOMElement" variable="$xmlElement">
+            <type by_reference="false">\DOMElement</type>
+          </tag>
+        </docblock>
+        <argument line="59">
+          <name>$xmlElement</name>
+          <default></default>
+          <type>\DOMElement</type>
+        </argument>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="71" package="Default">
+        <name>parseXml</name>
+        <full_name>parseXml</full_name>
+        <docblock line="64">
+          <description>Parses the XML of the feed entry.</description>
+          <long-description>&lt;p&gt;In this function the public fields are filled.&lt;/p&gt;</long-description>
+          <tag line="64" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="FeedDupeFilter\Feed" line="81" package="Default">
+        <name>getXmlChild</name>
+        <full_name>getXmlChild</full_name>
+        <docblock line="73">
+          <description>Returns the first child XML element or NULL if not found.</description>
+          <long-description>&lt;p&gt;Throws an exception if the tag name is empty or not a string.&lt;/p&gt;</long-description>
+          <tag line="73" name="param" description="Name of the XML tag." type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="73" name="return" description="" type="string|null">
+            <type by_reference="false">string</type>
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+        <argument line="81">
+          <name>$name</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="FeedDupeFilter\Feed" line="99" package="Default">
+        <name>getXmlChildValue</name>
+        <full_name>getXmlChildValue</full_name>
+        <docblock line="91">
+          <description>Returns the value of first child XML element or NULL if not found.</description>
+          <long-description>&lt;p&gt;Throws an exception if the tag name is empty or not a string.&lt;/p&gt;</long-description>
+          <tag line="91" name="param" description="Name of the XML tag." type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="91" name="return" description="" type="string|null">
+            <type by_reference="false">string</type>
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+        <argument line="99">
+          <name>$name</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="FeedDupeFilter\Feed" line="118" package="Default">
+        <name>getXmlChildAttributeValue</name>
+        <full_name>getXmlChildAttributeValue</full_name>
+        <docblock line="109">
+          <description>Returns the attribute value of the first child XML element or NULL if not found.</description>
+          <long-description>&lt;p&gt;Throws an exception if the tag or attribute name is empty or not a string.&lt;/p&gt;</long-description>
+          <tag line="109" name="param" description="Name of the XML tag." type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="109" name="param" description="Name of the attribute." type="string" variable="$attributeName">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="109" name="return" description="" type="string|null">
+            <type by_reference="false">string</type>
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+        <argument line="118">
+          <name>$name</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="118">
+          <name>$attributeName</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="141" package="Default">
+        <name>__toString</name>
+        <full_name>__toString</full_name>
+        <docblock line="136">
+          <description>Human representation of this instance.</description>
+          <long-description></long-description>
+          <tag line="136" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file Feed/FeedItemBase.php</error>
+    </parse_markers>
+  </file>
+  <file path="Feed/FeedManipulatorBase.php" hash="84db78a11ffeadac1faf15906cdf4865" package="Default">
+    <class final="false" abstract="true" namespace="FeedDupeFilter\Feed" line="10" package="Default">
+      <extends/>
+      <implements>\IteratorAggregate</implements>
+      <implements>\Countable</implements>
+      <name>FeedManipulatorBase</name>
+      <full_name>\FeedDupeFilter\Feed\FeedManipulatorBase</full_name>
+      <docblock line="4">
+        <description>Represents a class for manipulating XML feeds.</description>
+        <long-description/>
+        <tag line="4" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
+        <tag line="4" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="17" namespace="FeedDupeFilter\Feed" package="Default">
+        <name>$feed</name>
+        <default/>
+        <docblock line="12">
+          <description>The DOM structure of the feed.</description>
+          <long-description/>
+          <tag line="12" name="var" description="" type="\FeedDupeFilter\Feed\DOMDocument">
+            <type by_reference="false">\FeedDupeFilter\Feed\DOMDocument</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="24" namespace="FeedDupeFilter\Feed" package="Default">
+        <name>$items</name>
+        <default/>
+        <docblock line="19">
+          <description>The entries of the feed.</description>
+          <long-description/>
+          <tag line="19" name="var" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="public" line="33" namespace="FeedDupeFilter\Feed" package="Default">
+        <name>$loadingError</name>
+        <default/>
+        <docblock line="26">
+          <description>Contains the last error message, if errors occurred during loading of the feed.</description>
+          <long-description>&lt;p&gt;If no errors occurred, FALSE is returned.&lt;/p&gt;</long-description>
+          <tag line="26" name="var" description="" type="false|string">
+            <type by_reference="false">false</type>
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="38" package="Default">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="35">
+          <description>Constructor of the class.</description>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="59" package="Default">
+        <name>xmlErrorHandler</name>
+        <full_name>xmlErrorHandler</full_name>
+        <docblock line="44">
+          <description>Error handler when loading the feed XML.</description>
+          <long-description>&lt;p&gt;This handler is set and unset in loadFeed() to catch errors
+which occurred during parsing of the XML document in DOMDocument.
+The error message is extracted from the error string by using an
+regular expression and stored in the loadingError() field.&lt;/p&gt;</long-description>
+          <tag line="44" name="param" description="" type="int" variable="$code">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="44" name="param" description="" type="string" variable="$message">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="44" name="return" description="" type="false|void">
+            <type by_reference="false">false</type>
+            <type by_reference="false">void</type>
+          </tag>
+          <tag line="44" name="see" description="\FeedDupeFilter\Feed\set_error_handler()" refers="\FeedDupeFilter\Feed\set_error_handler()"/>
+          <tag line="44" name="see" description="\FeedDupeFilter\Feed\loadFeed()" refers="\FeedDupeFilter\Feed\loadFeed()"/>
+          <tag line="44" name="see" description="\FeedDupeFilter\Feed\$loadingError" refers="\FeedDupeFilter\Feed\$loadingError"/>
+        </docblock>
+        <argument line="59">
+          <name>$code</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="59">
+          <name>$message</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="84" package="Default">
+        <name>loadFeed</name>
+        <full_name>loadFeed</full_name>
+        <docblock line="76">
+          <description>Parses the raw XML feed.</description>
+          <long-description>&lt;p&gt;Throws an exception if the feed is empty or not a string.&lt;/p&gt;</long-description>
+          <tag line="76" name="param" description="The feed to be loaded." type="string" variable="$rawFeed">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="76" name="return" description="" type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+        </docblock>
+        <argument line="84">
+          <name>$rawFeed</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="106" package="Default">
+        <name>buildFeed</name>
+        <full_name>buildFeed</full_name>
+        <docblock line="101">
+          <description>Returns the finished XML feed.</description>
+          <long-description/>
+          <tag line="101" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="117" package="Default">
+        <name>removeItem</name>
+        <full_name>removeItem</full_name>
+        <docblock line="111">
+          <description>Removes an entry from the feed.</description>
+          <long-description/>
+          <tag line="111" name="param" description="Item to remove" type="\FeedDupeFilter\Feed\FeedItemBase" variable="$item">
+            <type by_reference="false">\FeedDupeFilter\Feed\FeedItemBase</type>
+          </tag>
+          <tag line="111" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+        <argument line="117">
+          <name>$item</name>
+          <default/>
+          <type>\FeedDupeFilter\Feed\FeedItemBase</type>
+        </argument>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="132" package="Default">
+        <name>isSupported</name>
+        <full_name>isSupported</full_name>
+        <docblock line="127">
+          <description>Returns if this feed manipulator is capable of manipulating the given feed.</description>
+          <long-description/>
+          <tag line="127" name="return" description="TRUE if this instance support the type of feed." type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="139" package="Default">
+        <name>parseFeed</name>
+        <full_name>parseFeed</full_name>
+        <docblock line="134">
+          <description>Parses the feed to extract all feed entries.</description>
+          <long-description/>
+          <tag line="134" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="149" package="Default">
+        <name>getIterator</name>
+        <full_name>getIterator</full_name>
+        <docblock line="141">
+          <description>Returns an Iterator instance for iterating the feed entries.</description>
+          <long-description>&lt;p&gt;Do not call offsetUnset(). Use removeItem() instead.&lt;/p&gt;</long-description>
+          <tag line="141" name="return" description="" type="\FeedDupeFilter\Feed\ArrayIterator">
+            <type by_reference="false">\FeedDupeFilter\Feed\ArrayIterator</type>
+          </tag>
+          <tag line="141" name="see" description="\FeedDupeFilter\Feed\removeItem()" refers="\FeedDupeFilter\Feed\removeItem()"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="159" package="Default">
+        <name>count</name>
+        <full_name>count</full_name>
+        <docblock line="154">
+          <description>Returns the number of feed entries.</description>
+          <long-description/>
+          <tag line="154" name="return" description="" type="int">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file Feed/FeedManipulatorBase.php</error>
+    </parse_markers>
+  </file>
+  <file path="Feed/Rss1FeedItem.php" hash="a006f586cc06ff72da02bc306533aefe" package="Default">
+    <class final="false" abstract="false" namespace="FeedDupeFilter\Feed" line="10" package="Default">
+      <extends>\FeedDupeFilter\Feed\FeedItemBase</extends>
+      <name>Rss1FeedItem</name>
+      <full_name>\FeedDupeFilter\Feed\Rss1FeedItem</full_name>
+      <docblock line="4">
+        <description>Represents an feed item in RSS 1.0 format.</description>
+        <long-description/>
+        <tag line="4" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
+        <tag line="4" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="15" package="Default">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="12">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="15">
+          <name>$xmlElement</name>
+          <default/>
+          <type>\DOMElement</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="23" package="Default">
+        <name>parseXml</name>
+        <full_name>parseXml</full_name>
+        <docblock line="20">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file Feed/Rss1FeedItem.php</error>
+      <error line="12" code="50015">Argument $xmlElement is missing from the Docblock of __construct()</error>
+    </parse_markers>
+  </file>
+  <file path="Feed/Rss1FeedManipulator.php" hash="2ccd1bbce2746eaecf48db12a0d7a2e9" package="Default">
+    <class final="false" abstract="false" namespace="FeedDupeFilter\Feed" line="10" package="Default">
+      <extends>\FeedDupeFilter\Feed\FeedManipulatorBase</extends>
+      <name>Rss1FeedManipulator</name>
+      <full_name>\FeedDupeFilter\Feed\Rss1FeedManipulator</full_name>
+      <docblock line="4">
+        <description>Represents a class for manipulating XML feeds in RSS 1.0 format.</description>
+        <long-description/>
+        <tag line="4" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
+        <tag line="4" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="15" package="Default">
+        <name>isSupported</name>
+        <full_name>isSupported</full_name>
+        <docblock line="12">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="28" package="Default">
+        <name>parseFeed</name>
+        <full_name>parseFeed</full_name>
+        <docblock line="25">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file Feed/Rss1FeedManipulator.php</error>
+    </parse_markers>
+  </file>
+  <file path="Feed/Rss2FeedItem.php" hash="e38bb317f4a3bef480ffe86f4c926fb6" package="Default">
+    <class final="false" abstract="false" namespace="FeedDupeFilter\Feed" line="10" package="Default">
+      <extends>\FeedDupeFilter\Feed\FeedItemBase</extends>
+      <name>Rss2FeedItem</name>
+      <full_name>\FeedDupeFilter\Feed\Rss2FeedItem</full_name>
+      <docblock line="4">
+        <description>Represents an feed item in RSS 2.0 format.</description>
+        <long-description/>
+        <tag line="4" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
+        <tag line="4" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="15" package="Default">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="12">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="15">
+          <name>$xmlElement</name>
+          <default/>
+          <type>\DOMElement</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="23" package="Default">
+        <name>parseXml</name>
+        <full_name>parseXml</full_name>
+        <docblock line="20">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file Feed/Rss2FeedItem.php</error>
+      <error line="12" code="50015">Argument $xmlElement is missing from the Docblock of __construct()</error>
+    </parse_markers>
+  </file>
+  <file path="Feed/Rss2FeedManipulator.php" hash="ce5d36b702f57b8add91e097fd7c8d62" package="Default">
+    <class final="false" abstract="false" namespace="FeedDupeFilter\Feed" line="10" package="Default">
+      <extends>\FeedDupeFilter\Feed\FeedManipulatorBase</extends>
+      <name>Rss2FeedManipulator</name>
+      <full_name>\FeedDupeFilter\Feed\Rss2FeedManipulator</full_name>
+      <docblock line="4">
+        <description>Represents a class for manipulating XML feeds in RSS 2.0 format.</description>
+        <long-description/>
+        <tag line="4" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
+        <tag line="4" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="15" package="Default">
+        <name>isSupported</name>
+        <full_name>isSupported</full_name>
+        <docblock line="12">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="30" package="Default">
+        <name>parseFeed</name>
+        <full_name>parseFeed</full_name>
+        <docblock line="27">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file Feed/Rss2FeedManipulator.php</error>
+    </parse_markers>
+  </file>
+  <file path="HttpClient.php" hash="2967793c3e79ab4c0cf6cc72e7266421" package="Default">
+    <class final="false" abstract="false" namespace="FeedDupeFilter" line="10" package="Default">
+      <extends/>
+      <name>HttpClient</name>
+      <full_name>\FeedDupeFilter\HttpClient</full_name>
+      <docblock line="4">
+        <description>A simple HTTP client.</description>
+        <long-description/>
+        <tag line="4" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
+        <tag line="4" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
+      </docblock>
+      <property final="false" static="false" visibility="public" line="15" namespace="FeedDupeFilter" package="Default">
+        <name>$status</name>
+        <default/>
+        <docblock line="12">
+          <description>The HTTP status code of the last request.</description>
+          <long-description/>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="public" line="20" namespace="FeedDupeFilter" package="Default">
+        <name>$contentType</name>
+        <default/>
+        <docblock line="17">
+          <description>The 'Content-Type' header of the last request.</description>
+          <long-description/>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="public" line="27" namespace="FeedDupeFilter" package="Default">
+        <name>$response</name>
+        <default/>
+        <docblock line="22">
+          <description>The response of the last request.</description>
+          <long-description/>
+          <tag line="22" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter" line="37" package="Default">
+        <name>get</name>
+        <full_name>get</full_name>
+        <docblock line="29">
+          <description>Issues an GET request to the specified URL.</description>
+          <long-description>&lt;p&gt;Throws an exception if the URL is empty.&lt;/p&gt;</long-description>
+          <tag line="29" name="param" description="" type="string" variable="$url">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="29" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+        <argument line="37">
+          <name>$url</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="FeedDupeFilter" line="66" package="Default">
+        <name>parseResponseHeader</name>
+        <full_name>parseResponseHeader</full_name>
+        <docblock line="58">
+          <description>Parses the needed entries from the response header.</description>
+          <long-description>&lt;p&gt;Needs the contents of the predefined $http_response_header variable.&lt;/p&gt;</long-description>
+          <tag line="58" name="param" description="" type="array" variable="$header">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="58" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+        <argument line="66">
+          <name>$header</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="FeedDupeFilter" line="87" package="Default">
+        <name>parseResponseHeaderEntry</name>
+        <full_name>parseResponseHeaderEntry</full_name>
+        <docblock line="79">
+          <description>Uses an regular expression to search for the correct value in the header array.</description>
+          <long-description/>
+          <tag line="79" name="param" description="Regular expression with one group" type="string" variable="$pattern">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="79" name="param" description="&amp;$destination Variable to save the value in (call by reference)" type="string" variable="$destination">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="79" name="param" description="" type="array" variable="$header">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="79" name="return" description="TRUE if pattern matched and group content saved in destination" type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+        </docblock>
+        <argument line="87">
+          <name>$pattern</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="87">
+          <name>$destination</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="87">
+          <name>$header</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file HttpClient.php</error>
+    </parse_markers>
+  </file>
+  <package name="Default" full_name="Default"/>
+  <namespace name="FeedDupeFilter" full_name="FeedDupeFilter">
+    <namespace name="Archive" full_name="FeedDupeFilter\Archive"/>
+    <namespace name="Feed" full_name="FeedDupeFilter\Feed"/>
+  </namespace>
+  <marker count="0">todo</marker>
+  <marker count="0">fixme</marker>
+  <deprecated count="0"/>
+</project>
