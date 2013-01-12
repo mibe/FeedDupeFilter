@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Sets the desired HTTP status code and stops the interpreter.
+ *
+ * @param int HTTP status code to be used.
+ * @param string Error message.
+ * @return void
+ */
 function fdf_generateHttpError($errorCode, $errorMessage = '')
 {
 	if (!is_numeric($errorCode) || $errorCode < 100 || $errorCode > 599)
@@ -19,16 +26,51 @@ function fdf_generateHttpError($errorCode, $errorMessage = '')
 	exit($errorMessage);
 }
 
+/**
+ * Autoloader for the script.
+ *
+ * @param string Name of the class to be loaded, with namespace.
+ * @return void
+ */
+function fdf_autoloader($className)
+{
+	// Root dir
+	$dir = __DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR;
+
+	// We don't need the vendor part of the namespace here.
+	$className = str_replace('FeedDupeFilter\\', '', $className);
+
+	$fileName  = '';
+	$namespace = '';
+
+	if ($lastNsPos = strrpos($className, '\\'))
+	{
+		$namespace = substr($className, 0, $lastNsPos);
+		$className = substr($className, $lastNsPos + 1);
+		$fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+	}
+
+	// Add relevant parts to filename
+	$fileName .= $className . '.php';
+	$fileName = $dir . $fileName;
+
+	require $fileName;
+}
+
+
 // Check if the feed URL was specified by the caller.
 if (!isset($_GET['feed']))
 	fdf_generateHttpError(400, 'No feed URL specified. Supply a valid feed URL in the \'feed\' parameter.');
 
+// Get the feed URL
 $feed = $_GET['feed'];
 
-require('src/Core.php');
+// Register the above autoloader
+spl_autoload_register('fdf_autoloader');
 
 try
 {
+	// Instantiate the Core class and filter the feed.
 	$core = new FeedDupeFilter\Core($feed);
 	$core->filter();
 }

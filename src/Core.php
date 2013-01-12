@@ -1,23 +1,6 @@
 <?php
 namespace FeedDupeFilter;
 
-require('Archive\ArchiveBase.php');
-require('Archive\FileArchive.php');
-
-require('Feed\FeedItemBase.php');
-require('Feed\FeedManipulatorBase.php');
-
-require('Feed\Rss2FeedItem.php');
-require('Feed\Rss2FeedManipulator.php');
-
-require('Feed\Rss1FeedItem.php');
-require('Feed\Rss1FeedManipulator.php');
-
-require('Feed\AtomFeedItem.php');
-require('Feed\AtomFeedManipulator.php');
-
-require('HttpClient.php');
-
 use FeedDupeFilter\Archive\FileArchive;
 use FeedDupeFilter\Feed\FeedItemBase;
 
