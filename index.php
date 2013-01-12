@@ -68,7 +68,8 @@ spl_autoload_register('fdf_autoloader');
 try
 {
 	// Instantiate the Core class and filter the feed.
-	$core = new FeedDupeFilter\Core($feed);
+	$archive = new FeedDupeFilter\Archive\FileArchive($feed, 'archive');
+	$core = new FeedDupeFilter\Core($feed, $archive);
 	$core->filter();
 }
 catch (Exception $ex)

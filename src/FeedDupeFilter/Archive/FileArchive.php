@@ -25,24 +25,39 @@ class FileArchive extends ArchiveBase
 	/**
 	 * {@inheritdoc}
 	 */
-	function __construct($archiveIdentifier)
+	function __construct($archiveIdentifier, $directory)
 	{
+		$this->buildFilename($archiveIdentifier, $directory);
+
 		parent::__construct($archiveIdentifier);
 	}
 
 	/**
 	 * Generates the filename from the archive identifier.
 	 *
+	 * Throws an exception if the given directory is not writeable.
+	 *
+	 * @param string Identifier of the archive.
+	 * @param string Directory, in which the archive file is stored.
 	 * @return void
 	 */
-	private function buildFilename()
+	private function buildFilename($archiveIdentifier, $directory)
 	{
-		// Replace all characters which are not digits and latin chars with a dash
-		$this->file = preg_replace("/[^a-zA-Z0-9]/", '-', $this->archiveIdentifier);
+		// Get the filesystem path.
+		$directory = realpath($directory);
 
-		// Chop the filename if it's longer than 200 chars.
-		if (strlen($this->file) > 200)
-			$this->file = substr($this->file, -200);
+		if (!is_writable($directory))
+			throw new \InvalidArgumentException('The given directory is not writable.');
+
+		$this->file = $directory . DIRECTORY_SEPARATOR;
+
+		// Replace all characters which are not digits and latin chars with a dash
+		$this->file .= preg_replace("/[^a-zA-Z0-9]/", '-', $archiveIdentifier);
+
+		// Chop the filename if it's longer than 255 chars.
+		// Some filesystems have a max path length of > 255
+		if (strlen($this->file) > 255)
+			$this->file = substr($this->file, -255);
 	}
 
 	/**
@@ -54,9 +69,6 @@ class FileArchive extends ArchiveBase
 	 */
 	protected function load()
 	{
-		if (empty($this->file))
-			$this->buildFilename();
-
 		// Only unserialize if the data file exists.
 		// If not, start with an empty archive.
 		if (file_exists($this->file))
@@ -69,11 +81,6 @@ class FileArchive extends ArchiveBase
 			$this->clear();
 			$this->save();
 		}
-
-		// Get realpath, because otherwise with a relative filepath the
-		// file would be written to SERVER_ROOT in the save() method (which
-		// is called in the parent destructor).
-		$this->file = realpath($this->file);
 	}
 
 	/**
@@ -85,13 +92,10 @@ class FileArchive extends ArchiveBase
 	 */
 	protected function save()
 	{
-		if (empty($this->file))
-			$this->buildFilename();
-
 		$data = serialize($this->contents);
 		$bytes = file_put_contents($this->file, $data);
 
 		if ($bytes === FALSE)
-			throw new \Exception(sprintf('Could not write archive to file "%s".', $this->file));
+			throw new \ErrorException(sprintf('Could not write archive to file "%s".', $this->file));
 	}
 }

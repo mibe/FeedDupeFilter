@@ -1,7 +1,7 @@
 <?php
 namespace FeedDupeFilter;
 
-use FeedDupeFilter\Archive\FileArchive;
+use FeedDupeFilter\Archive\ArchiveBase;
 use FeedDupeFilter\Feed\FeedItemBase;
 
 /**
@@ -60,16 +60,16 @@ class Core
 	 * Constructor of the class. Needs the URL of the feed.
 	 *
 	 * @param string $feedUrl URL to the feed which should be filtered.
+	 * @param ArchiveBase $archive Instance of an archive which implements ArchiveBase.
 	 */
-	function __construct($feedUrl)
+	function __construct($feedUrl, ArchiveBase $archive)
 	{
 		if (empty($feedUrl) || !is_string($feedUrl))
 			throw new \InvalidArgumentException('Invalid feed URL given. Must be a non-empty string.');
 
 		$this->feedUrl = $feedUrl;
 
-		// Use the feed URL as identifier
-		$this->archive = new FileArchive($feedUrl);
+		$this->archive = $archive;
 		$this->http = new HttpClient();
 
 		// Download the feed and check if a manipulator supports it
