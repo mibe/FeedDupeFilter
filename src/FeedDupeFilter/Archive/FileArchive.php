@@ -24,6 +24,9 @@ class FileArchive extends ArchiveBase
 
 	/**
 	 * {@inheritdoc}
+	 *
+	 * @param string Identifier of the archive.
+	 * @param string Directory in which the archive files are stored.
 	 */
 	function __construct($archiveIdentifier, $directory)
 	{

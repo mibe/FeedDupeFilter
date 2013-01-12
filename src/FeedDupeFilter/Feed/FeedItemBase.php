@@ -54,7 +54,7 @@ abstract class FeedItemBase
 	/**
 	 * Constructor of the class.
 	 *
-	 * @param DOMElement Corresponding XML element containing the feed entry.
+	 * @param \DOMElement Corresponding XML element containing the feed entry.
 	 */
 	function __construct(\DOMElement $xmlElement)
 	{
