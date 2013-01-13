@@ -68,8 +68,10 @@ spl_autoload_register('fdf_autoloader');
 try
 {
 	// Instantiate the Core class and filter the feed.
+	// Use LinkIdentifier as class for identifying feed entries.
 	$archive = new FeedDupeFilter\Archive\FileArchive($feed, 'archive');
-	$core = new FeedDupeFilter\Core($feed, $archive);
+	$identifier = new FeedDupeFilter\Identifier\LinkIdentifier();
+	$core = new FeedDupeFilter\Core($feed, $archive, $identifier);
 	$core->filter();
 }
 catch (Exception $ex)
