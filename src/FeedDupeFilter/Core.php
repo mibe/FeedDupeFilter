@@ -3,6 +3,7 @@ namespace FeedDupeFilter;
 
 use FeedDupeFilter\Archive\ArchiveBase;
 use FeedDupeFilter\Feed\FeedItemBase;
+use FeedDupeFilter\Identifier\IIdentifier;
 
 /**
  * Main class for filtering duplicated entries in RSS / ATOM feeds.
@@ -51,18 +52,31 @@ class Core
 	 * List of feed manipulators which should be probed and used to
 	 * manipulate the feed.
 	 *
+	 * This array is ordered, which means the first entry will be
+	 * used first.
+	 *
 	 * @static
 	 * @var array
 	 */
 	public static $manipulatorClasses = array('Rss2', 'Atom', 'Rss1');
 
 	/**
+	 * Instance of the used identifier.
+	 *
+	 * @var IIdentifier
+	 */
+	private $identifier;
+
+	/**
 	 * Constructor of the class. Needs the URL of the feed.
+	 *
+	 * Throws an exception if the feed URL is invalid.
 	 *
 	 * @param string $feedUrl URL to the feed which should be filtered.
 	 * @param ArchiveBase $archive Instance of an archive which implements ArchiveBase.
+	 * @param IIdentifier $identifier Instance of an identifier which implements IIdentifier.
 	 */
-	function __construct($feedUrl, ArchiveBase $archive)
+	function __construct($feedUrl, ArchiveBase $archive, IIdentifier $identifier)
 	{
 		if (empty($feedUrl) || !is_string($feedUrl))
 			throw new \InvalidArgumentException('Invalid feed URL given. Must be a non-empty string.');
@@ -70,6 +84,7 @@ class Core
 		$this->feedUrl = $feedUrl;
 
 		$this->archive = $archive;
+		$this->identifier = $identifier;
 		$this->http = new HttpClient();
 
 		// Download the feed and check if a manipulator supports it
@@ -201,11 +216,30 @@ class Core
 	/**
 	 * Generate an unique identifier from the feed item.
 	 *
-	 * @param FeedItemBase $feedItem 
+	 * The data from the IIdentifier-implementing class is used as data source.
+	 * The SHA1 hash function is calculated from this data.
+	 *
+	 * Throws a RuntimeException, when the used identifier class is not capable
+	 * of generating an identifier from this feed. This can happen, e.g. when
+	 * the feed entry has no date element and the DateIdentifier is used.
+	 *
+	 * @param FeedItemBase
 	 * @return string
 	 */
 	private function buildUniqueId(FeedItemBase $feedItem)
 	{
-		return sha1($feedItem->title);
+		$id = $this->identifier->getIdentifyingData($feedItem);
+
+		// Check if 
+		if ($id == NULL)
+		{
+			$className = get_class($this->identifier);
+			$msg = sprintf('The feed does not support the \'%s\' class.', $className);
+			$msg .= 'Use another identifier class.';
+
+			throw new \RuntimeException($msg);
+		}
+
+		return sha1($id);
 	}
 }
