@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * This file is part of the FeedDupeFilter project.
+ *
+ * @package FeedDupeFilter
+ * @link http://github.com/mibe/FeedDupeFilter
+ * @license http://opensource.org/licenses/MIT MIT License
+ */
+
 namespace FeedDupeFilter;
 
 /**

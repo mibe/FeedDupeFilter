@@ -1,6 +1,16 @@
 <?php
 
 /**
+ * Simple front end for FeedDupeFilter.
+ *
+ * @package FeedDupeFilter
+ * @link http://github.com/mibe/FeedDupeFilter
+ * @author Michael Bemmerl <mail@mx-server.de>
+ * @copyright Copyright (C) 2013 Michael Bemmerl
+ * @license http://opensource.org/licenses/MIT MIT License
+ */
+
+/**
  * Sets the desired HTTP status code and stops the interpreter.
  *
  * @param int HTTP status code to be used.
