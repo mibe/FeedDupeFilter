@@ -42,21 +42,6 @@ abstract class ArchiveBase implements \Countable
 		$this->archiveIdentifier = $archiveIdentifier;
 
 		$this->clear();
-		$this->load();
-	}
-
-	/**
-	 * Destructor of the class. Saves the archive back to its storage medium.
-	 *
-	 * The saving is done in the subclass, which implements the abstract
-	 * save() method.
-	 *
-	 * @return void
-	 * @see save()
-	 */
-	function __destruct()
-	{
-		$this->save();
 	}
 
 	/**
@@ -64,14 +49,14 @@ abstract class ArchiveBase implements \Countable
 	 *
 	 * @return void
 	 */
-	abstract protected function load();
+	abstract public function load();
 
 	/**
 	 * Saves the archive.
 	 *
 	 * @return void
 	 */
-	abstract protected function save();
+	abstract public function save();
 
 	/**
 	 * Add an entry to the archive.

@@ -84,12 +84,24 @@ class Core
 		$this->feedUrl = $feedUrl;
 
 		$this->archive = $archive;
+		$this->archive->load();
+
 		$this->identifier = $identifier;
 		$this->http = new HttpClient();
 
-		// Download the feed and check if a manipulator supports it
+		// Download the feed and check if a manipulator supports it.
 		$this->fetchFeed();
 		$this->detectManipulator();
+	}
+
+	/**
+	 * Saves the archive back to its storage medium.
+	 *
+	 * @return void
+	 */
+	function __destruct()
+	{
+		$this->archive->save();
 	}
 
 	/**
