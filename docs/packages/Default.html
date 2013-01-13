@@ -31,7 +31,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">15</span></a></li>
+                <span class="label label-info">26</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -59,6 +59,9 @@
 <a href="../packages/Default.html" title="Default"><i class="icon-folder-open"></i>Default</a><ul class="nav nav-list nav-packages"></ul>
 </li>
 <li class="nav-header">
+<i class="icon-custom icon-interface"></i> Interfaces</li>
+<li><a href="#IIdentifier" title="Defines an interface for returning an unique identifier of an feed item.">IIdentifier</a></li>
+<li class="nav-header">
 <i class="icon-custom icon-class"></i> Classes</li>
 <li><a href="#ArchiveBase" title="Represents an data archive which contains different items.">ArchiveBase</a></li>
 <li><a href="#FileArchive" title="Implements an archive which is stored in the local filesystem.">FileArchive</a></li>
@@ -72,6 +75,11 @@
 <li><a href="#Rss2FeedItem" title="Represents an feed item in RSS 2.0 format.">Rss2FeedItem</a></li>
 <li><a href="#Rss2FeedManipulator" title="Represents a class for manipulating XML feeds in RSS 2.0 format.">Rss2FeedManipulator</a></li>
 <li><a href="#HttpClient" title="A simple HTTP client.">HttpClient</a></li>
+<li><a href="#DateIdentifier" title="Uses the 'Date' element of an feed item as unique identifier.">DateIdentifier</a></li>
+<li><a href="#DescriptionIdentifier" title="Uses the 'Description' element of an feed item as unique identifier.">DescriptionIdentifier</a></li>
+<li><a href="#IdIdentifier" title="Uses the 'Id' element of an feed item as unique identifier.">IdIdentifier</a></li>
+<li><a href="#LinkIdentifier" title="Uses the 'Link' element of an feed item as unique identifier.">LinkIdentifier</a></li>
+<li><a href="#TitleIdentifier" title="Uses the 'Title' element of an feed item as unique identifier.">TitleIdentifier</a></li>
 </ul>
 </div>
 <div class="span8 package-contents">
@@ -81,6 +89,13 @@
 <div class="package-indent">
 <h3>
 <i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="IIdentifier" class="element ajax clickable interface">
+<h1>IIdentifier<a href="../classes/FeedDupeFilter.Identifier.IIdentifier.html">¶</a>
+</h1>
+<p class="short_description">Defines an interface for returning an unique identifier of an feed item.</p>
+<div class="details collapse"></div>
+<a href="../classes/FeedDupeFilter.Identifier.IIdentifier.html" class="more">« More »</a>
+</div>
 <div id="ArchiveBase" class="element ajax clickable class">
 <h1>ArchiveBase<a href="../classes/FeedDupeFilter.Archive.ArchiveBase.html">¶</a>
 </h1>
@@ -165,13 +180,48 @@
 <div class="details collapse"></div>
 <a href="../classes/FeedDupeFilter.HttpClient.html" class="more">« More »</a>
 </div>
+<div id="DateIdentifier" class="element ajax clickable class">
+<h1>DateIdentifier<a href="../classes/FeedDupeFilter.Identifier.DateIdentifier.html">¶</a>
+</h1>
+<p class="short_description">Uses the 'Date' element of an feed item as unique identifier.</p>
+<div class="details collapse"></div>
+<a href="../classes/FeedDupeFilter.Identifier.DateIdentifier.html" class="more">« More »</a>
+</div>
+<div id="DescriptionIdentifier" class="element ajax clickable class">
+<h1>DescriptionIdentifier<a href="../classes/FeedDupeFilter.Identifier.DescriptionIdentifier.html">¶</a>
+</h1>
+<p class="short_description">Uses the 'Description' element of an feed item as unique identifier.</p>
+<div class="details collapse"></div>
+<a href="../classes/FeedDupeFilter.Identifier.DescriptionIdentifier.html" class="more">« More »</a>
+</div>
+<div id="IdIdentifier" class="element ajax clickable class">
+<h1>IdIdentifier<a href="../classes/FeedDupeFilter.Identifier.IdIdentifier.html">¶</a>
+</h1>
+<p class="short_description">Uses the 'Id' element of an feed item as unique identifier.</p>
+<div class="details collapse"></div>
+<a href="../classes/FeedDupeFilter.Identifier.IdIdentifier.html" class="more">« More »</a>
+</div>
+<div id="LinkIdentifier" class="element ajax clickable class">
+<h1>LinkIdentifier<a href="../classes/FeedDupeFilter.Identifier.LinkIdentifier.html">¶</a>
+</h1>
+<p class="short_description">Uses the 'Link' element of an feed item as unique identifier.</p>
+<div class="details collapse"></div>
+<a href="../classes/FeedDupeFilter.Identifier.LinkIdentifier.html" class="more">« More »</a>
+</div>
+<div id="TitleIdentifier" class="element ajax clickable class">
+<h1>TitleIdentifier<a href="../classes/FeedDupeFilter.Identifier.TitleIdentifier.html">¶</a>
+</h1>
+<p class="short_description">Uses the 'Title' element of an feed item as unique identifier.</p>
+<div class="details collapse"></div>
+<a href="../classes/FeedDupeFilter.Identifier.TitleIdentifier.html" class="more">« More »</a>
+</div>
 </div>
 </div>
 </div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-01-12T04:07:35+01:00.<br></footer></div>
+            generated on 2013-01-13T03:37:08+01:00.<br></footer></div>
 </div>
 </body>
 </html>

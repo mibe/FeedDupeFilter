@@ -31,7 +31,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">15</span></a></li>
+                <span class="label label-info">26</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -57,6 +57,7 @@
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
 <li class="method public "><a href="#method___construct" title="__construct :: Constructor of the class."><span class="description">Constructor of the class.</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method___destruct" title="__destruct :: Saves the archive back to its storage medium."><span class="description">Saves the archive back to its storage medium.</span><pre>__destruct()</pre></a></li>
 <li class="method public "><a href="#method_filter" title="filter :: Filter out duplicated items in the feed."><span class="description">Filter out duplicated items in the feed.</span><pre>filter()</pre></a></li>
 </ul>
 </li>
@@ -80,6 +81,7 @@ manipulate the feed."><span class="description"></span><pre>$manipulatorClasses<
 <li class="property private "><a href="#property_feedManipulator" title="$feedManipulator :: Instance of the manipulator used to alter the feed."><span class="description"></span><pre>$feedManipulator</pre></a></li>
 <li class="property private "><a href="#property_feedUrl" title="$feedUrl :: URL of the original feed."><span class="description"></span><pre>$feedUrl</pre></a></li>
 <li class="property private "><a href="#property_http" title="$http :: Instance of the HTTP client."><span class="description"></span><pre>$http</pre></a></li>
+<li class="property private "><a href="#property_identifier" title="$identifier :: Instance of the used identifier."><span class="description"></span><pre>$identifier</pre></a></li>
 </ul>
 </li>
 </ul>
@@ -116,10 +118,12 @@ altered feed XML is build again and sent to the client.</p></div>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
 <h2>Constructor of the class.</h2>
-<pre>__construct(string $feedUrl, \FeedDupeFilter\Archive\ArchiveBase $archive) </pre>
+<pre>__construct(string $feedUrl, \FeedDupeFilter\Archive\ArchiveBase $archive, \FeedDupeFilter\Identifier\IIdentifier $identifier) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>Needs the URL of the feed.</p></div>
+<div class="long_description"><p>Needs the URL of the feed.</p>
+
+<p>Throws an exception if the feed URL is invalid.</p></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$feedUrl</h4>
@@ -127,7 +131,16 @@ altered feed XML is build again and sent to the client.</p></div>
 <div class="subelement argument">
 <h4>$archive</h4>
 <code><a href="../classes/FeedDupeFilter.Archive.ArchiveBase.html">\FeedDupeFilter\Archive\ArchiveBase</a></code><p>Instance of an archive which implements ArchiveBase.</p></div>
+<div class="subelement argument">
+<h4>$identifier</h4>
+<code><a href="../classes/FeedDupeFilter.Identifier.IIdentifier.html">\FeedDupeFilter\Identifier\IIdentifier</a></code><p>Instance of an identifier which implements IIdentifier.</p></div>
 </div></div>
+</div>
+<a id="method___destruct"></a><div class="element clickable method public method___destruct" data-toggle="collapse" data-target=".method___destruct .collapse">
+<h2>Saves the archive back to its storage medium.</h2>
+<pre>__destruct() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="method_filter"></a><div class="element clickable method public method_filter" data-toggle="collapse" data-target=".method_filter .collapse">
 <h2>Filter out duplicated items in the feed.</h2>
@@ -155,7 +168,12 @@ feed in the 'output' element and the header fields in the 'header' element.</p><
 <pre>buildUniqueId(\FeedDupeFilter\Feed\FeedItemBase $feedItem) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>The data from the IIdentifier-implementing class is used as data source.
+The SHA1 hash function is calculated from this data.</p>
+
+<p>Throws a RuntimeException, when the used identifier class is not capable
+of generating an identifier from this feed. This can happen, e.g. when
+the feed entry has no date element and the DateIdentifier is used.</p></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$feedItem</h4>
@@ -196,7 +214,8 @@ information about the cause.</p></div></div></div>
 <pre>$manipulatorClasses : array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>This array is ordered, which means the first entry will be
+used first.</p></div>
 <table class="table table-bordered"><tr>
 <th>static</th>
 <td></td>
@@ -217,7 +236,7 @@ information about the cause.</p></div></div></div>
 </div>
 <a id="property_feedManipulator"> </a><div class="element clickable property private property_feedManipulator" data-toggle="collapse" data-target=".property_feedManipulator .collapse">
 <h2></h2>
-<pre>$feedManipulator : \FeedDupeFilter\FeedManipulatorBase</pre>
+<pre>$feedManipulator : <a href="../classes/FeedDupeFilter.Feed.FeedManipulatorBase.html">\FeedDupeFilter\Feed\FeedManipulatorBase</a></pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
@@ -233,6 +252,12 @@ information about the cause.</p></div></div></div>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
+<a id="property_identifier"> </a><div class="element clickable property private property_identifier" data-toggle="collapse" data-target=".property_identifier .collapse">
+<h2></h2>
+<pre>$identifier : <a href="../classes/FeedDupeFilter.Identifier.IIdentifier.html">\FeedDupeFilter\Identifier\IIdentifier</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
 </div>
 </div>
 </div>
@@ -240,7 +265,7 @@ information about the cause.</p></div></div></div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-01-12T04:07:35+01:00.<br></footer></div>
+            generated on 2013-01-13T03:37:08+01:00.<br></footer></div>
 </div>
 </body>
 </html>

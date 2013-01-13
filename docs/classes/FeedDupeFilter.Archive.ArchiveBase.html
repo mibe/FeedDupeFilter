@@ -31,7 +31,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">15</span></a></li>
+                <span class="label label-info">26</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -57,18 +57,13 @@
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
 <li class="method public "><a href="#method___construct" title="__construct :: Constructor of the class."><span class="description">Constructor of the class.</span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#method___destruct" title="__destruct :: Destructor of the class."><span class="description">Destructor of the class.</span><pre>__destruct()</pre></a></li>
 <li class="method public "><a href="#method_add" title="add :: Add an entry to the archive."><span class="description">Add an entry to the archive.</span><pre>add()</pre></a></li>
 <li class="method public "><a href="#method_clear" title="clear :: Remove every element in the archive."><span class="description">Remove every element in the archive.</span><pre>clear()</pre></a></li>
 <li class="method public "><a href="#method_contains" title="contains :: Check if the archive already contains an specified element."><span class="description">Check if the archive already contains an specified element.</span><pre>contains()</pre></a></li>
 <li class="method public "><a href="#method_count" title="count :: Returns the number of entries in the archive."><span class="description">Returns the number of entries in the archive.</span><pre>count()</pre></a></li>
+<li class="method public "><a href="#method_load" title="load :: Loads the archive."><span class="description">Loads the archive.</span><pre>load()</pre></a></li>
 <li class="method public "><a href="#method_remove" title="remove :: Remove an element from the archive."><span class="description">Remove an element from the archive.</span><pre>remove()</pre></a></li>
-</ul>
-</li>
-<li class="nav-header protected">» Protected
-                    <ul>
-<li class="method protected "><a href="#method_load" title="load :: Loads the archive."><span class="description">Loads the archive.</span><pre>load()</pre></a></li>
-<li class="method protected "><a href="#method_save" title="save :: Saves the archive."><span class="description">Saves the archive.</span><pre>save()</pre></a></li>
+<li class="method public "><a href="#method_save" title="save :: Saves the archive."><span class="description">Saves the archive.</span><pre>save()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
@@ -130,21 +125,6 @@ subclasses, which implement the two abstract methods.</p>
 <code>string</code><p>Identifier of the archive</p></div>
 </div></div>
 </div>
-<a id="method___destruct"></a><div class="element clickable method public method___destruct" data-toggle="collapse" data-target=".method___destruct .collapse">
-<h2>Destructor of the class.</h2>
-<pre>__destruct() : void</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>Saves the archive back to its storage medium.</p>
-
-<p>The saving is done in the subclass, which implements the abstract
-save() method.</p></div>
-<table class="table table-bordered"><tr>
-<th>see</th>
-<td><a href="">\FeedDupeFilter\Archive\save()</a></td>
-</tr></table>
-</div></div>
-</div>
 <a id="method_add"></a><div class="element clickable method public method_add" data-toggle="collapse" data-target=".method_add .collapse">
 <h2>Add an entry to the archive.</h2>
 <pre>add(string $uid) : void</pre>
@@ -190,6 +170,12 @@ save() method.</p></div>
 <div class="subelement response"><code>int</code></div>
 </div></div>
 </div>
+<a id="method_load"></a><div class="element clickable method public method_load" data-toggle="collapse" data-target=".method_load .collapse">
+<h2>Loads the archive.</h2>
+<pre>load() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
 <a id="method_remove"></a><div class="element clickable method public method_remove" data-toggle="collapse" data-target=".method_remove .collapse">
 <h2>Remove an element from the archive.</h2>
 <pre>remove(string $uid) : void</pre>
@@ -203,13 +189,7 @@ save() method.</p></div>
 </div>
 </div></div>
 </div>
-<a id="method_load"></a><div class="element clickable method protected method_load" data-toggle="collapse" data-target=".method_load .collapse">
-<h2>Loads the archive.</h2>
-<pre>load() : void</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="method_save"></a><div class="element clickable method protected method_save" data-toggle="collapse" data-target=".method_save .collapse">
+<a id="method_save"></a><div class="element clickable method public method_save" data-toggle="collapse" data-target=".method_save .collapse">
 <h2>Saves the archive.</h2>
 <pre>save() : void</pre>
 <div class="labels"></div>
@@ -236,7 +216,7 @@ save() method.</p></div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-01-12T04:07:35+01:00.<br></footer></div>
+            generated on 2013-01-13T03:37:08+01:00.<br></footer></div>
 </div>
 </body>
 </html>
