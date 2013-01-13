@@ -32,6 +32,14 @@ abstract class ArchiveBase implements \Countable
 	 */
 	protected $archiveIdentifier;
 
+	/** Flag which declares if the archive has changed.
+	 *
+	 * This is set to TRUE, when an entry is added to or removed from the archive.
+	 *
+	 * @var bool
+	 */
+	protected $changed;
+
 	/**
 	 * Constructor of the class. Needs an archive identifier, which is used to
 	 * uniquely identify any archive.
@@ -51,6 +59,9 @@ abstract class ArchiveBase implements \Countable
 		$this->archiveIdentifier = $archiveIdentifier;
 
 		$this->clear();
+
+		// Set to false after initializing the contents array.
+		$this->changed = FALSE;
 	}
 
 	/**
@@ -78,7 +89,10 @@ abstract class ArchiveBase implements \Countable
 	public function add($uid)
 	{
 		if (!$this->contains($uid))
+		{
 			$this->contents[] = $uid;
+			$this->changed = TRUE;
+		}
 	}
 
 	/**
@@ -90,7 +104,10 @@ abstract class ArchiveBase implements \Countable
 	public function remove($uid)
 	{
 		if (($key = array_search($uid, $this->contents, TRUE)) !== FALSE)
+		{
 			unset($this->contents[$key]);
+			$this->changed = TRUE;
+		}
 	}
 
 	/**
@@ -112,6 +129,7 @@ abstract class ArchiveBase implements \Countable
 	public function clear()
 	{
 		$this->contents = array();
+		$this->changed = TRUE;
 	}
 
 	/**

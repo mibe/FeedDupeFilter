@@ -103,6 +103,10 @@ class FileArchive extends ArchiveBase
 	 */
 	public function save()
 	{
+		// If nothing has changed, then there's nothing to do here.
+		if (!$this->changed)
+			return;
+
 		$data = serialize($this->contents);
 		$bytes = file_put_contents($this->file, $data);
 
