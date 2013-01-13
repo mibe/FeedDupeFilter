@@ -40,7 +40,6 @@ class FileArchive extends ArchiveBase
 	 *
 	 * Throws an exception if the given directory is not writeable.
 	 *
-	 * @param string Identifier of the archive.
 	 * @param string Directory, in which the archive file is stored.
 	 * @return void
 	 */

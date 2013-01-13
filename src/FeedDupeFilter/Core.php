@@ -44,7 +44,7 @@ class Core
 	/**
 	 * Instance of the manipulator used to alter the feed.
 	 *
-	 * @var FeedManipulatorBase
+	 * @var Feed\FeedManipulatorBase
 	 */
 	private $feedManipulator;
 
