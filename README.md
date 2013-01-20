@@ -64,7 +64,7 @@ The documentation is found in the "docs" subfolder.
 
 This project is in compliance with the following standards:
 * PSR-0
-
+* PSR-1
 
 ## License
 
