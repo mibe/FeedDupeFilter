@@ -58,7 +58,8 @@ $core->filter();
 
 ### Documentation
 
-The documentation is found in the "docs" subfolder.
+The documentation can be found in the "gh-pages" branch or on GitHub Pages:
+http://mibe.github.com/FeedDupeFilter/
 
 ## PSR
 
