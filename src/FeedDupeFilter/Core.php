@@ -199,7 +199,7 @@ class Core
 	 * @param bool $directOutput TRUE if the feed is sent to the client.
 	 * @return void|array
 	 */
-	public function filter($directOutput = TRUE)
+	public function filter($directOutput = FALSE)
 	{
 		// Parse the feed and extract all items.
 		$this->feedManipulator->parseFeed();

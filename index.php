@@ -82,7 +82,7 @@ try
 	$archive = new FeedDupeFilter\Archive\FileArchive($feed, 'archive');
 	$identifier = new FeedDupeFilter\Identifier\LinkIdentifier();
 	$core = new FeedDupeFilter\Core($feed, $archive, $identifier);
-	$core->filter();
+	$newFeed = $core->filter(TRUE);
 }
 catch (Exception $ex)
 {
