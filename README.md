@@ -59,7 +59,7 @@ $core->filter();
 ### Documentation
 
 The documentation can be found in the "gh-pages" branch or on GitHub Pages:
-http://mibe.github.com/FeedDupeFilter/
+http://mibe.github.io/FeedDupeFilter/
 
 ## PSR
 
