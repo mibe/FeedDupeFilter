@@ -11,10 +11,10 @@
 namespace FeedDupeFilter\Feed;
 
 /**
- * Represents a class for manipulating XML feeds in RSS 1.0 format.
+ * Represents a class for manipulating XML feeds in RSS 1.0 / 1.1 format.
  *
  * @author Michael Bemmerl <mail@mx-server.de>
- * @copyright Copyright (C) 2013 Michael Bemmerl
+ * @copyright Copyright (C) 2013, 2016 Michael Bemmerl
  */
 class Rss1FeedManipulator extends FeedManipulatorBase
 {
@@ -23,12 +23,14 @@ class Rss1FeedManipulator extends FeedManipulatorBase
 	 */
 	public function isSupported()
 	{
-		$rdf = $this->feed->documentElement;
+		$root = $this->feed->documentElement;
 
-		if ($rdf->tagName != 'rdf:RDF')
-			return FALSE;
-
-		return $rdf->isDefaultNamespace('http://purl.org/rss/1.0/');
+		// RSS 1.0
+		if ($root->tagName == 'rdf:RDF')
+			return $root->isDefaultNamespace('http://purl.org/rss/1.0/');
+		// RSS 1.1
+		else if ($root->tagName == 'Channel')
+			return $root->isDefaultNamespace('http://purl.org/net/rss1.1#');
 	}
 
 	/**

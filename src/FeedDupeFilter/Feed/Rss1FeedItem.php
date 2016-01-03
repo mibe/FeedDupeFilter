@@ -11,7 +11,7 @@
 namespace FeedDupeFilter\Feed;
 
 /**
- * Represents an feed item in RSS 1.0 format.
+ * Represents an feed item in RSS 1.0 / 1.1 format.
  *
  * @author Michael Bemmerl <mail@mx-server.de>
  * @copyright Copyright (C) 2013 Michael Bemmerl
