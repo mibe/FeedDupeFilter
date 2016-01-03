@@ -67,7 +67,7 @@ class Core
 	 * @static
 	 * @var array
 	 */
-	public static $manipulatorClasses = array('Rss2', 'Atom', 'Rss1');
+	public static $manipulatorClasses = array('Rss2', 'Atom', 'Rss1', 'Rss09');
 
 	/**
 	 * Instance of the used identifier.
