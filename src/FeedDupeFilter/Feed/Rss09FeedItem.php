@@ -11,7 +11,7 @@
 namespace FeedDupeFilter\Feed;
 
 /**
- * Represents an feed item in RSS 0.91 / 0.92 format.
+ * Represents an feed item in RSS 0.90 / 0.91 / 0.92 format.
  *
  * This class inherits the class for RSS 1.0, since the XML elements used
  * are the same.

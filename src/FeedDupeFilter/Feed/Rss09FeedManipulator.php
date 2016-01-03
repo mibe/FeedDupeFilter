@@ -11,7 +11,7 @@
 namespace FeedDupeFilter\Feed;
 
 /**
- * Represents a class for manipulating XML feeds in RSS 0.91 / 0.92 format.
+ * Represents a class for manipulating XML feeds in RSS 0.90 / 0.91 / 0.92 format.
  *
  * @author Michael Bemmerl <mail@mx-server.de>
  * @copyright Copyright (C) 2016 Michael Bemmerl
@@ -23,10 +23,21 @@ class Rss09FeedManipulator extends FeedManipulatorBase
 	 */
 	public function isSupported()
 	{
-		$rss = $this->feed->documentElement;
-		$version = $rss->getAttribute('version');
+		$root = $this->feed->documentElement;
 
-		return ($version == '0.92' || $version == '0.91');
+		// RSS 0.91, 0.92
+		if ($root->tagName == 'rss')
+		{
+			$version = $root->getAttribute('version');
+			return ($version == '0.92' || $version == '0.91');
+		}
+		// RSS 0.90
+		else if ($root->tagName == 'rdf:RDF')
+		{
+			return $root->isDefaultNamespace('http://channel.netscape.com/rdf/simple/0.9/');
+		}
+
+		return false;
 	}
 
 	/**
