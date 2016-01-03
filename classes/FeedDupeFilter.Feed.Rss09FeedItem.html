@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>phpDocumentor » \FeedDupeFilter\Feed\Rss2FeedItem</title>
+<title>phpDocumentor » \FeedDupeFilter\Feed\Rss09FeedItem</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -58,9 +58,9 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method___construct" title="__construct :: Constructor of the class."><span class="description">Constructor of the class.</span><pre>__construct()</pre></a></li>
+<li class="method public inherited"><a href="#method___construct" title="__construct :: Constructor of the class."><span class="description">Constructor of the class.</span><pre>__construct()</pre></a></li>
 <li class="method public inherited"><a href="#method___toString" title="__toString :: Human representation of this instance."><span class="description">Human representation of this instance.</span><pre>__toString()</pre></a></li>
-<li class="method public "><a href="#method_parseXml" title="parseXml :: Parses the XML of the feed entry."><span class="description">Parses the XML of the feed entry.</span><pre>parseXml()</pre></a></li>
+<li class="method public inherited"><a href="#method_parseXml" title="parseXml :: Parses the XML of the feed entry."><span class="description">Parses the XML of the feed entry.</span><pre>parseXml()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header protected">» Protected
@@ -86,7 +86,7 @@
 </ul>
 </div>
 <div class="span8">
-<a id="\FeedDupeFilter\Feed\Rss2FeedItem"></a><ul class="breadcrumb">
+<a id="\FeedDupeFilter\Feed\Rss09FeedItem"></a><ul class="breadcrumb">
 <li>
 <a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
 </li>
@@ -95,13 +95,14 @@
 <span class="divider">\</span><a href="../namespaces/FeedDupeFilter.Feed.html">Feed</a>
 </li>
 <li class="active">
-<span class="divider">\</span><a href="../classes/FeedDupeFilter.Feed.Rss2FeedItem.html">Rss2FeedItem</a>
+<span class="divider">\</span><a href="../classes/FeedDupeFilter.Feed.Rss09FeedItem.html">Rss09FeedItem</a>
 </li>
 </ul>
 <div class="element class">
-<p class="short_description">Represents an feed item in RSS 2.0 format.</p>
+<p class="short_description">Represents an feed item in RSS 0.90 / 0.91 / 0.92 format.</p>
 <div class="details">
-<div class="long_description"></div>
+<div class="long_description"><p>This class inherits the class for RSS 1.0, since the XML elements used
+are the same.</p></div>
 <table class="table table-bordered">
 <tr>
 <th>author</th>
@@ -109,7 +110,7 @@
 </tr>
 <tr>
 <th>copyright</th>
-<td>Copyright (C) 2013 Michael Bemmerl</td>
+<td>Copyright (C) 2016 Michael Bemmerl</td>
 </tr>
 </table>
 <h3>
@@ -117,9 +118,13 @@
 <a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
 <h2>Constructor of the class.</h2>
 <pre>__construct(\DOMElement $xmlElement) </pre>
-<div class="labels"></div>
+<div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\FeedDupeFilter\Feed\Rss1FeedItem::__construct()</td>
+</tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$xmlElement</h4>
@@ -132,10 +137,16 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\FeedDupeFilter\Feed\FeedItemBase::__toString()</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\FeedDupeFilter\Feed\Rss1FeedItem::__toString()</td>
+</tr>
+</table>
 <h3>Returns</h3>
 <div class="subelement response"><code>string</code></div>
 </div></div>
@@ -143,8 +154,14 @@
 <a id="method_parseXml"></a><div class="element clickable method public method_parseXml" data-toggle="collapse" data-target=".method_parseXml .collapse">
 <h2>Parses the XML of the feed entry.</h2>
 <pre>parseXml() : void</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"><p>In this function the public fields are filled.</p></div></div></div>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>In this function the public fields are filled.</p></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\FeedDupeFilter\Feed\Rss1FeedItem::parseXml()</td>
+</tr></table>
+</div></div>
 </div>
 <a id="method_getXmlChildAttributeValue"></a><div class="element clickable method protected method_getXmlChildAttributeValue" data-toggle="collapse" data-target=".method_getXmlChildAttributeValue .collapse">
 <h2>Returns the attribute value of the first child XML element or NULL if not found.</h2>
@@ -152,10 +169,16 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><p>Throws an exception if the tag or attribute name is empty or not a string.</p></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\FeedDupeFilter\Feed\FeedItemBase::getXmlChildAttributeValue()</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\FeedDupeFilter\Feed\Rss1FeedItem::getXmlChildAttributeValue()</td>
+</tr>
+</table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$name</h4>
@@ -175,10 +198,16 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><p>Throws an exception if the tag name is empty or not a string.</p></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\FeedDupeFilter\Feed\FeedItemBase::getXmlChildValue()</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\FeedDupeFilter\Feed\Rss1FeedItem::getXmlChildValue()</td>
+</tr>
+</table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$name</h4>
@@ -195,10 +224,16 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><p>Throws an exception if the tag name is empty or not a string.</p></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\FeedDupeFilter\Feed\FeedItemBase::getXmlChild()</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\FeedDupeFilter\Feed\Rss1FeedItem::getXmlChild()</td>
+</tr>
+</table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$name</h4>
@@ -217,10 +252,16 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><p>NULL if not available.</p></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\FeedDupeFilter\Feed\FeedItemBase::$$date</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\FeedDupeFilter\Feed\Rss1FeedItem::$$date</td>
+</tr>
+</table>
 </div></div>
 </div>
 <a id="property_description"> </a><div class="element clickable property public property_description" data-toggle="collapse" data-target=".property_description .collapse">
@@ -229,10 +270,16 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><p>NULL if not available.</p></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\FeedDupeFilter\Feed\FeedItemBase::$$description</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\FeedDupeFilter\Feed\Rss1FeedItem::$$description</td>
+</tr>
+</table>
 </div></div>
 </div>
 <a id="property_id"> </a><div class="element clickable property public property_id" data-toggle="collapse" data-target=".property_id .collapse">
@@ -241,10 +288,16 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><p>NULL if not available.</p></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\FeedDupeFilter\Feed\FeedItemBase::$$id</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\FeedDupeFilter\Feed\Rss1FeedItem::$$id</td>
+</tr>
+</table>
 </div></div>
 </div>
 <a id="property_link"> </a><div class="element clickable property public property_link" data-toggle="collapse" data-target=".property_link .collapse">
@@ -253,10 +306,16 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><p>NULL if not available.</p></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\FeedDupeFilter\Feed\FeedItemBase::$$link</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\FeedDupeFilter\Feed\Rss1FeedItem::$$link</td>
+</tr>
+</table>
 </div></div>
 </div>
 <a id="property_title"> </a><div class="element clickable property public property_title" data-toggle="collapse" data-target=".property_title .collapse">
@@ -265,10 +324,16 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><p>NULL if not available.</p></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\FeedDupeFilter\Feed\FeedItemBase::$$title</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\FeedDupeFilter\Feed\Rss1FeedItem::$$title</td>
+</tr>
+</table>
 </div></div>
 </div>
 <a id="property_xmlElement"> </a><div class="element clickable property public property_xmlElement" data-toggle="collapse" data-target=".property_xmlElement .collapse">
@@ -277,10 +342,16 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\FeedDupeFilter\Feed\FeedItemBase::$$xmlElement</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\FeedDupeFilter\Feed\Rss1FeedItem::$$xmlElement</td>
+</tr>
+</table>
 </div></div>
 </div>
 </div>

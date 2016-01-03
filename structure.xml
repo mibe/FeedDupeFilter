@@ -275,10 +275,10 @@ and used as the file name.&lt;/p&gt;</long-description>
       </method>
     </class>
   </file>
-  <file path="Core.php" hash="c75ad98a207010ad665fbecb578e42bc" package="FeedDupeFilter">
+  <file path="Core.php" hash="fc0122d0a385081827329ee38a0122eb" package="FeedDupeFilter">
     <docblock line="3">
       <description>This file is part of the FeedDupeFilter project.</description>
-      <long-description/>
+      <long-description></long-description>
       <tag line="3" name="package" description="FeedDupeFilter"/>
       <tag line="3" name="link" description="http://github.com/mibe/FeedDupeFilter" link="http://github.com/mibe/FeedDupeFilter"/>
       <tag line="3" name="license" description="http://opensource.org/licenses/MIT MIT License"/>
@@ -299,10 +299,10 @@ altered feed XML is build again and sent to the client.&lt;/p&gt;</long-descript
       </docblock>
       <property final="false" static="false" visibility="private" line="36" namespace="FeedDupeFilter" package="Default">
         <name>$feedUrl</name>
-        <default/>
+        <default></default>
         <docblock line="31">
           <description>URL of the original feed.</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="31" name="var" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -310,10 +310,10 @@ altered feed XML is build again and sent to the client.&lt;/p&gt;</long-descript
       </property>
       <property final="false" static="false" visibility="private" line="44" namespace="FeedDupeFilter" package="Default">
         <name>$archive</name>
-        <default/>
+        <default></default>
         <docblock line="38">
           <description>Instance of the used archive.</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="38" name="see" description="\FeedDupeFilter\Archive\ArchiveBase" refers="\FeedDupeFilter\Archive\ArchiveBase"/>
           <tag line="38" name="var" description="" type="\FeedDupeFilter\Archive\ArchiveBase">
             <type by_reference="false">\FeedDupeFilter\Archive\ArchiveBase</type>
@@ -322,10 +322,10 @@ altered feed XML is build again and sent to the client.&lt;/p&gt;</long-descript
       </property>
       <property final="false" static="false" visibility="private" line="51" namespace="FeedDupeFilter" package="Default">
         <name>$http</name>
-        <default/>
+        <default></default>
         <docblock line="46">
           <description>Instance of the HTTP client.</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="46" name="var" description="" type="\FeedDupeFilter\HttpClient">
             <type by_reference="false">\FeedDupeFilter\HttpClient</type>
           </tag>
@@ -333,10 +333,10 @@ altered feed XML is build again and sent to the client.&lt;/p&gt;</long-descript
       </property>
       <property final="false" static="false" visibility="private" line="58" namespace="FeedDupeFilter" package="Default">
         <name>$feedManipulator</name>
-        <default/>
+        <default></default>
         <docblock line="53">
           <description>Instance of the manipulator used to alter the feed.</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="53" name="var" description="" type="\FeedDupeFilter\Feed\FeedManipulatorBase">
             <type by_reference="false">\FeedDupeFilter\Feed\FeedManipulatorBase</type>
           </tag>
@@ -344,7 +344,7 @@ altered feed XML is build again and sent to the client.&lt;/p&gt;</long-descript
       </property>
       <property final="false" static="true" visibility="public" line="70" namespace="FeedDupeFilter" package="Default">
         <name>$manipulatorClasses</name>
-        <default>array('Rss2', 'Atom', 'Rss1')</default>
+        <default>array('Rss2', 'Atom', 'Rss1', 'Rss09')</default>
         <docblock line="60">
           <description>List of feed manipulators which should be probed and used to
 manipulate the feed.</description>
@@ -358,10 +358,10 @@ used first.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="private" line="77" namespace="FeedDupeFilter" package="Default">
         <name>$identifier</name>
-        <default/>
+        <default></default>
         <docblock line="72">
           <description>Instance of the used identifier.</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="72" name="var" description="" type="\FeedDupeFilter\Identifier\IIdentifier">
             <type by_reference="false">\FeedDupeFilter\Identifier\IIdentifier</type>
           </tag>
@@ -387,17 +387,17 @@ used first.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="88">
           <name>$feedUrl</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
         <argument line="88">
           <name>$archive</name>
-          <default/>
+          <default></default>
           <type>\FeedDupeFilter\Archive\ArchiveBase</type>
         </argument>
         <argument line="88">
           <name>$identifier</name>
-          <default/>
+          <default></default>
           <type>\FeedDupeFilter\Identifier\IIdentifier</type>
         </argument>
       </method>
@@ -406,7 +406,7 @@ used first.&lt;/p&gt;</long-description>
         <full_name>__destruct</full_name>
         <docblock line="106">
           <description>Saves the archive back to its storage medium.</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="106" name="return" description="" type="void">
             <type by_reference="false">void</type>
           </tag>
@@ -462,7 +462,7 @@ feed in the 'output' element and the header fields in the 'header' element.&lt;/
         </docblock>
         <argument line="202">
           <name>$directOutput</name>
-          <default>TRUE</default>
+          <default>FALSE</default>
           <type/>
         </argument>
       </method>
@@ -486,7 +486,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
         </docblock>
         <argument line="250">
           <name>$feedItem</name>
-          <default/>
+          <default></default>
           <type>\FeedDupeFilter\Feed\FeedItemBase</type>
         </argument>
       </method>
@@ -495,7 +495,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
   <file path="Feed/AtomFeedItem.php" hash="1f37b7d4deba12cc51501ed732419ebb" package="FeedDupeFilter">
     <docblock line="3">
       <description>This file is part of the FeedDupeFilter project.</description>
-      <long-description/>
+      <long-description></long-description>
       <tag line="3" name="package" description="FeedDupeFilter"/>
       <tag line="3" name="link" description="http://github.com/mibe/FeedDupeFilter" link="http://github.com/mibe/FeedDupeFilter"/>
       <tag line="3" name="license" description="http://opensource.org/licenses/MIT MIT License"/>
@@ -506,7 +506,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
       <full_name>\FeedDupeFilter\Feed\AtomFeedItem</full_name>
       <docblock line="13">
         <description>Represents an feed item in ATOM format.</description>
-        <long-description/>
+        <long-description></long-description>
         <tag line="13" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
         <tag line="13" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
       </docblock>
@@ -515,11 +515,11 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
         <full_name>__construct</full_name>
         <docblock line="21">
           <description>{@inheritdoc}</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
         <argument line="24">
           <name>$xmlElement</name>
-          <default/>
+          <default></default>
           <type>\DOMElement</type>
         </argument>
       </method>
@@ -528,7 +528,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
         <full_name>parseXml</full_name>
         <docblock line="29">
           <description>{@inheritdoc}</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
       </method>
     </class>
@@ -539,7 +539,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
   <file path="Feed/AtomFeedManipulator.php" hash="8e8b88e09558ae314dbe37039b4178fb" package="FeedDupeFilter">
     <docblock line="3">
       <description>This file is part of the FeedDupeFilter project.</description>
-      <long-description/>
+      <long-description></long-description>
       <tag line="3" name="package" description="FeedDupeFilter"/>
       <tag line="3" name="link" description="http://github.com/mibe/FeedDupeFilter" link="http://github.com/mibe/FeedDupeFilter"/>
       <tag line="3" name="license" description="http://opensource.org/licenses/MIT MIT License"/>
@@ -550,7 +550,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
       <full_name>\FeedDupeFilter\Feed\AtomFeedManipulator</full_name>
       <docblock line="13">
         <description>Represents a class for manipulating XML feeds in ATOM format.</description>
-        <long-description/>
+        <long-description></long-description>
         <tag line="13" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
         <tag line="13" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
       </docblock>
@@ -559,7 +559,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
         <full_name>isSupported</full_name>
         <docblock line="21">
           <description>{@inheritdoc}</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="39" package="Default">
@@ -567,7 +567,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
         <full_name>parseFeed</full_name>
         <docblock line="36">
           <description>{@inheritdoc}</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
       </method>
     </class>
@@ -575,7 +575,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
   <file path="Feed/FeedItemBase.php" hash="8963499e0e62813c04da79cb8bc3e63c" package="FeedDupeFilter">
     <docblock line="3">
       <description>This file is part of the FeedDupeFilter project.</description>
-      <long-description/>
+      <long-description></long-description>
       <tag line="3" name="package" description="FeedDupeFilter"/>
       <tag line="3" name="link" description="http://github.com/mibe/FeedDupeFilter" link="http://github.com/mibe/FeedDupeFilter"/>
       <tag line="3" name="license" description="http://opensource.org/licenses/MIT MIT License"/>
@@ -586,13 +586,13 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
       <full_name>\FeedDupeFilter\Feed\FeedItemBase</full_name>
       <docblock line="13">
         <description>Respresents a single entry of an feed.</description>
-        <long-description/>
+        <long-description></long-description>
         <tag line="13" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
         <tag line="13" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
       </docblock>
       <property final="false" static="false" visibility="public" line="26" namespace="FeedDupeFilter\Feed" package="Default">
         <name>$title</name>
-        <default/>
+        <default></default>
         <docblock line="21">
           <description>Title of the entry.</description>
           <long-description>&lt;p&gt;NULL if not available.&lt;/p&gt;</long-description>
@@ -604,7 +604,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
       </property>
       <property final="false" static="false" visibility="public" line="33" namespace="FeedDupeFilter\Feed" package="Default">
         <name>$description</name>
-        <default/>
+        <default></default>
         <docblock line="28">
           <description>Description of the entry.</description>
           <long-description>&lt;p&gt;NULL if not available.&lt;/p&gt;</long-description>
@@ -616,7 +616,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
       </property>
       <property final="false" static="false" visibility="public" line="40" namespace="FeedDupeFilter\Feed" package="Default">
         <name>$date</name>
-        <default/>
+        <default></default>
         <docblock line="35">
           <description>Date of the entry.</description>
           <long-description>&lt;p&gt;NULL if not available.&lt;/p&gt;</long-description>
@@ -628,7 +628,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
       </property>
       <property final="false" static="false" visibility="public" line="47" namespace="FeedDupeFilter\Feed" package="Default">
         <name>$link</name>
-        <default/>
+        <default></default>
         <docblock line="42">
           <description>Link of the entry.</description>
           <long-description>&lt;p&gt;NULL if not available.&lt;/p&gt;</long-description>
@@ -640,7 +640,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
       </property>
       <property final="false" static="false" visibility="public" line="54" namespace="FeedDupeFilter\Feed" package="Default">
         <name>$id</name>
-        <default/>
+        <default></default>
         <docblock line="49">
           <description>ID of the entry.</description>
           <long-description>&lt;p&gt;NULL if not available.&lt;/p&gt;</long-description>
@@ -652,10 +652,10 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
       </property>
       <property final="false" static="false" visibility="public" line="61" namespace="FeedDupeFilter\Feed" package="Default">
         <name>$xmlElement</name>
-        <default/>
+        <default></default>
         <docblock line="56">
           <description>Corresponding XML element.</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="56" name="var" description="" type="\FeedDupeFilter\Feed\DOMElement">
             <type by_reference="false">\FeedDupeFilter\Feed\DOMElement</type>
           </tag>
@@ -666,14 +666,14 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
         <full_name>__construct</full_name>
         <docblock line="63">
           <description>Constructor of the class.</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="63" name="param" description="Corresponding XML element containing the feed entry." type="\DOMElement" variable="$xmlElement">
             <type by_reference="false">\DOMElement</type>
           </tag>
         </docblock>
         <argument line="68">
           <name>$xmlElement</name>
-          <default/>
+          <default></default>
           <type>\DOMElement</type>
         </argument>
       </method>
@@ -704,7 +704,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
         </docblock>
         <argument line="90">
           <name>$name</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
@@ -724,7 +724,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
         </docblock>
         <argument line="108">
           <name>$name</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
@@ -747,12 +747,12 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
         </docblock>
         <argument line="127">
           <name>$name</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
         <argument line="127">
           <name>$attributeName</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
@@ -761,7 +761,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
         <full_name>__toString</full_name>
         <docblock line="145">
           <description>Human representation of this instance.</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="145" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -772,7 +772,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
   <file path="Feed/FeedManipulatorBase.php" hash="4800eb2b17517475738c1f5b34695fb4" package="FeedDupeFilter">
     <docblock line="3">
       <description>This file is part of the FeedDupeFilter project.</description>
-      <long-description/>
+      <long-description></long-description>
       <tag line="3" name="package" description="FeedDupeFilter"/>
       <tag line="3" name="link" description="http://github.com/mibe/FeedDupeFilter" link="http://github.com/mibe/FeedDupeFilter"/>
       <tag line="3" name="license" description="http://opensource.org/licenses/MIT MIT License"/>
@@ -785,16 +785,16 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
       <full_name>\FeedDupeFilter\Feed\FeedManipulatorBase</full_name>
       <docblock line="13">
         <description>Represents a class for manipulating XML feeds.</description>
-        <long-description/>
+        <long-description></long-description>
         <tag line="13" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
         <tag line="13" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
       </docblock>
       <property final="false" static="false" visibility="protected" line="26" namespace="FeedDupeFilter\Feed" package="Default">
         <name>$feed</name>
-        <default/>
+        <default></default>
         <docblock line="21">
           <description>The DOM structure of the feed.</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="21" name="var" description="" type="\FeedDupeFilter\Feed\DOMDocument">
             <type by_reference="false">\FeedDupeFilter\Feed\DOMDocument</type>
           </tag>
@@ -802,10 +802,10 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
       </property>
       <property final="false" static="false" visibility="protected" line="33" namespace="FeedDupeFilter\Feed" package="Default">
         <name>$items</name>
-        <default/>
+        <default></default>
         <docblock line="28">
           <description>The entries of the feed.</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="28" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
@@ -813,7 +813,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
       </property>
       <property final="false" static="false" visibility="public" line="42" namespace="FeedDupeFilter\Feed" package="Default">
         <name>$loadingError</name>
-        <default/>
+        <default></default>
         <docblock line="35">
           <description>Contains the last error message, if errors occurred during loading of the feed.</description>
           <long-description>&lt;p&gt;If no errors occurred, FALSE is returned.&lt;/p&gt;</long-description>
@@ -828,7 +828,7 @@ the feed entry has no date element and the DateIdentifier is used.&lt;/p&gt;</lo
         <full_name>__construct</full_name>
         <docblock line="44">
           <description>Constructor of the class.</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="68" package="Default">
@@ -856,12 +856,12 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         </docblock>
         <argument line="68">
           <name>$code</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
         <argument line="68">
           <name>$message</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
@@ -880,7 +880,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         </docblock>
         <argument line="93">
           <name>$rawFeed</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
@@ -889,7 +889,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         <full_name>buildFeed</full_name>
         <docblock line="110">
           <description>Returns the finished XML feed.</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="110" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -900,7 +900,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         <full_name>removeItem</full_name>
         <docblock line="120">
           <description>Removes an entry from the feed.</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="120" name="param" description="Item to remove" type="\FeedDupeFilter\Feed\FeedItemBase" variable="$item">
             <type by_reference="false">\FeedDupeFilter\Feed\FeedItemBase</type>
           </tag>
@@ -910,7 +910,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         </docblock>
         <argument line="126">
           <name>$item</name>
-          <default/>
+          <default></default>
           <type>\FeedDupeFilter\Feed\FeedItemBase</type>
         </argument>
       </method>
@@ -919,7 +919,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         <full_name>isSupported</full_name>
         <docblock line="136">
           <description>Returns if this feed manipulator is capable of manipulating the given feed.</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="136" name="return" description="TRUE if this instance support the type of feed." type="bool">
             <type by_reference="false">bool</type>
           </tag>
@@ -930,7 +930,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         <full_name>parseFeed</full_name>
         <docblock line="143">
           <description>Parses the feed to extract all feed entries.</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="143" name="return" description="" type="void">
             <type by_reference="false">void</type>
           </tag>
@@ -953,7 +953,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         <full_name>count</full_name>
         <docblock line="163">
           <description>Returns the number of feed entries.</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="163" name="return" description="" type="int">
             <type by_reference="false">int</type>
           </tag>
@@ -961,10 +961,67 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
       </method>
     </class>
   </file>
-  <file path="Feed/Rss1FeedItem.php" hash="12be5c4d2c70fdf97400bb7f7004f445" package="FeedDupeFilter">
+  <file path="Feed/Rss09FeedItem.php" hash="a4ca9aa9fc967df9e3b3e9183c2bc9ad" package="FeedDupeFilter">
     <docblock line="3">
       <description>This file is part of the FeedDupeFilter project.</description>
-      <long-description/>
+      <long-description></long-description>
+      <tag line="3" name="package" description="FeedDupeFilter"/>
+      <tag line="3" name="link" description="http://github.com/mibe/FeedDupeFilter" link="http://github.com/mibe/FeedDupeFilter"/>
+      <tag line="3" name="license" description="http://opensource.org/licenses/MIT MIT License"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="FeedDupeFilter\Feed" line="22" package="Default">
+      <extends>\FeedDupeFilter\Feed\Rss1FeedItem</extends>
+      <name>Rss09FeedItem</name>
+      <full_name>\FeedDupeFilter\Feed\Rss09FeedItem</full_name>
+      <docblock line="13">
+        <description>Represents an feed item in RSS 0.90 / 0.91 / 0.92 format.</description>
+        <long-description>&lt;p&gt;This class inherits the class for RSS 1.0, since the XML elements used
+are the same.&lt;/p&gt;</long-description>
+        <tag line="13" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
+        <tag line="13" name="copyright" description="Copyright (C) 2016 Michael Bemmerl"/>
+      </docblock>
+    </class>
+  </file>
+  <file path="Feed/Rss09FeedManipulator.php" hash="22971594670a51520b4922440c50f115" package="FeedDupeFilter">
+    <docblock line="3">
+      <description>This file is part of the FeedDupeFilter project.</description>
+      <long-description></long-description>
+      <tag line="3" name="package" description="FeedDupeFilter"/>
+      <tag line="3" name="link" description="http://github.com/mibe/FeedDupeFilter" link="http://github.com/mibe/FeedDupeFilter"/>
+      <tag line="3" name="license" description="http://opensource.org/licenses/MIT MIT License"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="FeedDupeFilter\Feed" line="19" package="Default">
+      <extends>\FeedDupeFilter\Feed\FeedManipulatorBase</extends>
+      <name>Rss09FeedManipulator</name>
+      <full_name>\FeedDupeFilter\Feed\Rss09FeedManipulator</full_name>
+      <docblock line="13">
+        <description>Represents a class for manipulating XML feeds in RSS 0.90 / 0.91 / 0.92 format.</description>
+        <long-description></long-description>
+        <tag line="13" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
+        <tag line="13" name="copyright" description="Copyright (C) 2016 Michael Bemmerl"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="24" package="Default">
+        <name>isSupported</name>
+        <full_name>isSupported</full_name>
+        <docblock line="21">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="46" package="Default">
+        <name>parseFeed</name>
+        <full_name>parseFeed</full_name>
+        <docblock line="43">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+    </class>
+  </file>
+  <file path="Feed/Rss1FeedItem.php" hash="b7830522e286b42ba34265f5bbdbeb44" package="FeedDupeFilter">
+    <docblock line="3">
+      <description>This file is part of the FeedDupeFilter project.</description>
+      <long-description></long-description>
       <tag line="3" name="package" description="FeedDupeFilter"/>
       <tag line="3" name="link" description="http://github.com/mibe/FeedDupeFilter" link="http://github.com/mibe/FeedDupeFilter"/>
       <tag line="3" name="license" description="http://opensource.org/licenses/MIT MIT License"/>
@@ -974,8 +1031,8 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
       <name>Rss1FeedItem</name>
       <full_name>\FeedDupeFilter\Feed\Rss1FeedItem</full_name>
       <docblock line="13">
-        <description>Represents an feed item in RSS 1.0 format.</description>
-        <long-description/>
+        <description>Represents an feed item in RSS 1.0 / 1.1 format.</description>
+        <long-description></long-description>
         <tag line="13" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
         <tag line="13" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
       </docblock>
@@ -984,11 +1041,11 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         <full_name>__construct</full_name>
         <docblock line="21">
           <description>{@inheritdoc}</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
         <argument line="24">
           <name>$xmlElement</name>
-          <default/>
+          <default></default>
           <type>\DOMElement</type>
         </argument>
       </method>
@@ -997,7 +1054,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         <full_name>parseXml</full_name>
         <docblock line="29">
           <description>{@inheritdoc}</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
       </method>
     </class>
@@ -1005,10 +1062,10 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
       <error line="21" code="50015">Argument $xmlElement is missing from the Docblock of __construct()</error>
     </parse_markers>
   </file>
-  <file path="Feed/Rss1FeedManipulator.php" hash="c4d4d83054b742ed403bcf267ccfef93" package="FeedDupeFilter">
+  <file path="Feed/Rss1FeedManipulator.php" hash="6db102bb188b4de81cfd68e2c6eac844" package="FeedDupeFilter">
     <docblock line="3">
       <description>This file is part of the FeedDupeFilter project.</description>
-      <long-description/>
+      <long-description></long-description>
       <tag line="3" name="package" description="FeedDupeFilter"/>
       <tag line="3" name="link" description="http://github.com/mibe/FeedDupeFilter" link="http://github.com/mibe/FeedDupeFilter"/>
       <tag line="3" name="license" description="http://opensource.org/licenses/MIT MIT License"/>
@@ -1018,25 +1075,25 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
       <name>Rss1FeedManipulator</name>
       <full_name>\FeedDupeFilter\Feed\Rss1FeedManipulator</full_name>
       <docblock line="13">
-        <description>Represents a class for manipulating XML feeds in RSS 1.0 format.</description>
-        <long-description/>
+        <description>Represents a class for manipulating XML feeds in RSS 1.0 / 1.1 format.</description>
+        <long-description></long-description>
         <tag line="13" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
-        <tag line="13" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
+        <tag line="13" name="copyright" description="Copyright (C) 2013, 2016 Michael Bemmerl"/>
       </docblock>
       <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="24" package="Default">
         <name>isSupported</name>
         <full_name>isSupported</full_name>
         <docblock line="21">
           <description>{@inheritdoc}</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="37" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="39" package="Default">
         <name>parseFeed</name>
         <full_name>parseFeed</full_name>
-        <docblock line="34">
+        <docblock line="36">
           <description>{@inheritdoc}</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
       </method>
     </class>
@@ -1044,7 +1101,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
   <file path="Feed/Rss2FeedItem.php" hash="3415b40693278a6ace8fbb1f4be90164" package="FeedDupeFilter">
     <docblock line="3">
       <description>This file is part of the FeedDupeFilter project.</description>
-      <long-description/>
+      <long-description></long-description>
       <tag line="3" name="package" description="FeedDupeFilter"/>
       <tag line="3" name="link" description="http://github.com/mibe/FeedDupeFilter" link="http://github.com/mibe/FeedDupeFilter"/>
       <tag line="3" name="license" description="http://opensource.org/licenses/MIT MIT License"/>
@@ -1055,7 +1112,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
       <full_name>\FeedDupeFilter\Feed\Rss2FeedItem</full_name>
       <docblock line="13">
         <description>Represents an feed item in RSS 2.0 format.</description>
-        <long-description/>
+        <long-description></long-description>
         <tag line="13" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
         <tag line="13" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
       </docblock>
@@ -1064,11 +1121,11 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         <full_name>__construct</full_name>
         <docblock line="21">
           <description>{@inheritdoc}</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
         <argument line="24">
           <name>$xmlElement</name>
-          <default/>
+          <default></default>
           <type>\DOMElement</type>
         </argument>
       </method>
@@ -1077,7 +1134,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         <full_name>parseXml</full_name>
         <docblock line="29">
           <description>{@inheritdoc}</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
       </method>
     </class>
@@ -1088,7 +1145,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
   <file path="Feed/Rss2FeedManipulator.php" hash="6b0ae226e3262fcf7ce2fccb4b924e6a" package="FeedDupeFilter">
     <docblock line="3">
       <description>This file is part of the FeedDupeFilter project.</description>
-      <long-description/>
+      <long-description></long-description>
       <tag line="3" name="package" description="FeedDupeFilter"/>
       <tag line="3" name="link" description="http://github.com/mibe/FeedDupeFilter" link="http://github.com/mibe/FeedDupeFilter"/>
       <tag line="3" name="license" description="http://opensource.org/licenses/MIT MIT License"/>
@@ -1099,7 +1156,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
       <full_name>\FeedDupeFilter\Feed\Rss2FeedManipulator</full_name>
       <docblock line="13">
         <description>Represents a class for manipulating XML feeds in RSS 2.0 format.</description>
-        <long-description/>
+        <long-description></long-description>
         <tag line="13" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
         <tag line="13" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
       </docblock>
@@ -1108,7 +1165,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         <full_name>isSupported</full_name>
         <docblock line="21">
           <description>{@inheritdoc}</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="FeedDupeFilter\Feed" line="39" package="Default">
@@ -1116,7 +1173,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         <full_name>parseFeed</full_name>
         <docblock line="36">
           <description>{@inheritdoc}</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
       </method>
     </class>
@@ -1124,7 +1181,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
   <file path="HttpClient.php" hash="312e4fa708ffc30dd1d27b1067841765" package="FeedDupeFilter">
     <docblock line="3">
       <description>This file is part of the FeedDupeFilter project.</description>
-      <long-description/>
+      <long-description></long-description>
       <tag line="3" name="package" description="FeedDupeFilter"/>
       <tag line="3" name="link" description="http://github.com/mibe/FeedDupeFilter" link="http://github.com/mibe/FeedDupeFilter"/>
       <tag line="3" name="license" description="http://opensource.org/licenses/MIT MIT License"/>
@@ -1135,32 +1192,32 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
       <full_name>\FeedDupeFilter\HttpClient</full_name>
       <docblock line="13">
         <description>A simple HTTP client.</description>
-        <long-description/>
+        <long-description></long-description>
         <tag line="13" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
         <tag line="13" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
       </docblock>
       <property final="false" static="false" visibility="public" line="24" namespace="FeedDupeFilter" package="Default">
         <name>$status</name>
-        <default/>
+        <default></default>
         <docblock line="21">
           <description>The HTTP status code of the last request.</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
       </property>
       <property final="false" static="false" visibility="public" line="29" namespace="FeedDupeFilter" package="Default">
         <name>$contentType</name>
-        <default/>
+        <default></default>
         <docblock line="26">
           <description>The 'Content-Type' header of the last request.</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
       </property>
       <property final="false" static="false" visibility="public" line="36" namespace="FeedDupeFilter" package="Default">
         <name>$response</name>
-        <default/>
+        <default></default>
         <docblock line="31">
           <description>The response of the last request.</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="31" name="var" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -1181,7 +1238,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         </docblock>
         <argument line="46">
           <name>$url</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
@@ -1200,7 +1257,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         </docblock>
         <argument line="75">
           <name>$header</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
@@ -1209,7 +1266,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         <full_name>parseResponseHeaderEntry</full_name>
         <docblock line="88">
           <description>Uses an regular expression to search for the correct value in the header array.</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="88" name="param" description="Regular expression with one group" type="string" variable="$pattern">
             <type by_reference="false">string</type>
           </tag>
@@ -1225,17 +1282,17 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         </docblock>
         <argument line="96">
           <name>$pattern</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
         <argument line="96">
           <name>$destination</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
         <argument line="96">
           <name>$header</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
@@ -1244,7 +1301,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
   <file path="Identifier/DateIdentifier.php" hash="684a71f1de3561f3786c0b4c4c0afa07" package="FeedDupeFilter">
     <docblock line="3">
       <description>This file is part of the FeedDupeFilter project.</description>
-      <long-description/>
+      <long-description></long-description>
       <tag line="3" name="package" description="FeedDupeFilter"/>
       <tag line="3" name="link" description="http://github.com/mibe/FeedDupeFilter" link="http://github.com/mibe/FeedDupeFilter"/>
       <tag line="3" name="license" description="http://opensource.org/licenses/MIT MIT License"/>
@@ -1256,7 +1313,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
       <full_name>\FeedDupeFilter\Identifier\DateIdentifier</full_name>
       <docblock line="15">
         <description>Uses the 'Date' element of an feed item as unique identifier.</description>
-        <long-description/>
+        <long-description></long-description>
         <tag line="15" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
         <tag line="15" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
       </docblock>
@@ -1265,11 +1322,11 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         <full_name>getIdentifyingData</full_name>
         <docblock line="23">
           <description>{@inheritdoc}</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
         <argument line="26">
           <name>$item</name>
-          <default/>
+          <default></default>
           <type>\FeedDupeFilter\Feed\FeedItemBase</type>
         </argument>
       </method>
@@ -1281,7 +1338,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
   <file path="Identifier/DescriptionIdentifier.php" hash="ad2f245bdba75d0e70da5665aaa22567" package="FeedDupeFilter">
     <docblock line="3">
       <description>This file is part of the FeedDupeFilter project.</description>
-      <long-description/>
+      <long-description></long-description>
       <tag line="3" name="package" description="FeedDupeFilter"/>
       <tag line="3" name="link" description="http://github.com/mibe/FeedDupeFilter" link="http://github.com/mibe/FeedDupeFilter"/>
       <tag line="3" name="license" description="http://opensource.org/licenses/MIT MIT License"/>
@@ -1293,7 +1350,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
       <full_name>\FeedDupeFilter\Identifier\DescriptionIdentifier</full_name>
       <docblock line="15">
         <description>Uses the 'Description' element of an feed item as unique identifier.</description>
-        <long-description/>
+        <long-description></long-description>
         <tag line="15" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
         <tag line="15" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
       </docblock>
@@ -1302,11 +1359,11 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         <full_name>getIdentifyingData</full_name>
         <docblock line="23">
           <description>{@inheritdoc}</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
         <argument line="26">
           <name>$item</name>
-          <default/>
+          <default></default>
           <type>\FeedDupeFilter\Feed\FeedItemBase</type>
         </argument>
       </method>
@@ -1318,7 +1375,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
   <file path="Identifier/IdIdentifier.php" hash="c3ccfa80d91eeef74ba5a8c6b57fa9fb" package="FeedDupeFilter">
     <docblock line="3">
       <description>This file is part of the FeedDupeFilter project.</description>
-      <long-description/>
+      <long-description></long-description>
       <tag line="3" name="package" description="FeedDupeFilter"/>
       <tag line="3" name="link" description="http://github.com/mibe/FeedDupeFilter" link="http://github.com/mibe/FeedDupeFilter"/>
       <tag line="3" name="license" description="http://opensource.org/licenses/MIT MIT License"/>
@@ -1330,7 +1387,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
       <full_name>\FeedDupeFilter\Identifier\IdIdentifier</full_name>
       <docblock line="15">
         <description>Uses the 'Id' element of an feed item as unique identifier.</description>
-        <long-description/>
+        <long-description></long-description>
         <tag line="15" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
         <tag line="15" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
       </docblock>
@@ -1339,11 +1396,11 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
         <full_name>getIdentifyingData</full_name>
         <docblock line="23">
           <description>{@inheritdoc}</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
         <argument line="26">
           <name>$item</name>
-          <default/>
+          <default></default>
           <type>\FeedDupeFilter\Feed\FeedItemBase</type>
         </argument>
       </method>
@@ -1355,7 +1412,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
   <file path="Identifier/IIdentifier.php" hash="8e2a713dbaec4b6bb0d18a2df76a77ab" package="FeedDupeFilter">
     <docblock line="3">
       <description>This file is part of the FeedDupeFilter project.</description>
-      <long-description/>
+      <long-description></long-description>
       <tag line="3" name="package" description="FeedDupeFilter"/>
       <tag line="3" name="link" description="http://github.com/mibe/FeedDupeFilter" link="http://github.com/mibe/FeedDupeFilter"/>
       <tag line="3" name="license" description="http://opensource.org/licenses/MIT MIT License"/>
@@ -1365,7 +1422,7 @@ regular expression and stored in the loadingError() field.&lt;/p&gt;</long-descr
       <full_name>\FeedDupeFilter\Identifier\IIdentifier</full_name>
       <docblock line="15">
         <description>Defines an interface for returning an unique identifier of an feed item.</description>
-        <long-description/>
+        <long-description></long-description>
         <tag line="15" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
         <tag line="15" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
       </docblock>
@@ -1388,7 +1445,7 @@ if the feed is just not conform to the feed specification.&lt;/p&gt;</long-descr
         </docblock>
         <argument line="34">
           <name>$item</name>
-          <default/>
+          <default></default>
           <type>\FeedDupeFilter\Feed\FeedItemBase</type>
         </argument>
       </method>
@@ -1397,7 +1454,7 @@ if the feed is just not conform to the feed specification.&lt;/p&gt;</long-descr
   <file path="Identifier/LinkIdentifier.php" hash="ece7adf3d472d390e60a5b8ee7f55b9f" package="FeedDupeFilter">
     <docblock line="3">
       <description>This file is part of the FeedDupeFilter project.</description>
-      <long-description/>
+      <long-description></long-description>
       <tag line="3" name="package" description="FeedDupeFilter"/>
       <tag line="3" name="link" description="http://github.com/mibe/FeedDupeFilter" link="http://github.com/mibe/FeedDupeFilter"/>
       <tag line="3" name="license" description="http://opensource.org/licenses/MIT MIT License"/>
@@ -1409,7 +1466,7 @@ if the feed is just not conform to the feed specification.&lt;/p&gt;</long-descr
       <full_name>\FeedDupeFilter\Identifier\LinkIdentifier</full_name>
       <docblock line="15">
         <description>Uses the 'Link' element of an feed item as unique identifier.</description>
-        <long-description/>
+        <long-description></long-description>
         <tag line="15" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
         <tag line="15" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
       </docblock>
@@ -1418,11 +1475,11 @@ if the feed is just not conform to the feed specification.&lt;/p&gt;</long-descr
         <full_name>getIdentifyingData</full_name>
         <docblock line="23">
           <description>{@inheritdoc}</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
         <argument line="26">
           <name>$item</name>
-          <default/>
+          <default></default>
           <type>\FeedDupeFilter\Feed\FeedItemBase</type>
         </argument>
       </method>
@@ -1434,7 +1491,7 @@ if the feed is just not conform to the feed specification.&lt;/p&gt;</long-descr
   <file path="Identifier/TitleIdentifier.php" hash="a8cc67ad0bb35626c87bb20921a5dbde" package="FeedDupeFilter">
     <docblock line="3">
       <description>This file is part of the FeedDupeFilter project.</description>
-      <long-description/>
+      <long-description></long-description>
       <tag line="3" name="package" description="FeedDupeFilter"/>
       <tag line="3" name="link" description="http://github.com/mibe/FeedDupeFilter" link="http://github.com/mibe/FeedDupeFilter"/>
       <tag line="3" name="license" description="http://opensource.org/licenses/MIT MIT License"/>
@@ -1446,7 +1503,7 @@ if the feed is just not conform to the feed specification.&lt;/p&gt;</long-descr
       <full_name>\FeedDupeFilter\Identifier\TitleIdentifier</full_name>
       <docblock line="15">
         <description>Uses the 'Title' element of an feed item as unique identifier.</description>
-        <long-description/>
+        <long-description></long-description>
         <tag line="15" name="author" description="Michael Bemmerl &lt;mail@mx-server.de&gt;"/>
         <tag line="15" name="copyright" description="Copyright (C) 2013 Michael Bemmerl"/>
       </docblock>
@@ -1455,11 +1512,11 @@ if the feed is just not conform to the feed specification.&lt;/p&gt;</long-descr
         <full_name>getIdentifyingData</full_name>
         <docblock line="23">
           <description>{@inheritdoc}</description>
-          <long-description/>
+          <long-description></long-description>
         </docblock>
         <argument line="26">
           <name>$item</name>
-          <default/>
+          <default></default>
           <type>\FeedDupeFilter\Feed\FeedItemBase</type>
         </argument>
       </method>
